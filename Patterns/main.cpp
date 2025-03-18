@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Creational/Singleton/Singleton.h"
+#include "Creational/Prototype/Prototype.h"
 
 
 int main() {
@@ -9,10 +10,11 @@ int main() {
 
 	std::vector<std::shared_ptr<Pattern>> patterns;
 	patterns.push_back(std::make_shared<SingletonPattern>());
+	patterns.push_back(std::make_shared<PrototypePattern>());
 
 	for (auto& pattern : patterns) 
 	{
-		std::cout << pattern->get_info() << std::endl;
+		std::cout << "\n" << pattern->get_info() << std::endl;
 		ret = pattern->run();
 		if (ret != 0) break;
 	}

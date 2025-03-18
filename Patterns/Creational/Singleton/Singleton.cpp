@@ -36,7 +36,7 @@ LoggerSingleton* LoggerSingleton::instance = nullptr;
 
 
 std::string SingletonPattern::get_info() {
-	return "Name: Singleton.\n  Type: Creational;\n  Description: Singleton insures that only one instance of an object exists and provides global access to it;";
+	return "Name: Singleton.\nType: Creational.\nDescription: The Singleton ensures that only one instance of an object exists and provides global access to it.";
 }
 
 int SingletonPattern::run() {

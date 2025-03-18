@@ -82,14 +82,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Singleton.cpp">
+    <ClCompile Include="Creational\Singleton\Singleton.cpp">
       <Filter>Creational\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Creational\Prototype\Prototype.cpp">
+      <Filter>Creational\Prototype</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
-    <ClInclude Include="Singleton.h">
+    <ClInclude Include="Creational\Singleton\Singleton.h">
       <Filter>Creational\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Creational\Prototype\Prototype.h">
+      <Filter>Creational\Prototype</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
