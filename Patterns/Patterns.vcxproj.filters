@@ -88,6 +88,9 @@
     <ClCompile Include="Creational\Prototype\Prototype.cpp">
       <Filter>Creational\Prototype</Filter>
     </ClCompile>
+    <ClCompile Include="Creational\FactoryMethod\FactoryMethod.cpp">
+      <Filter>Creational\FactroryMethod</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -96,6 +99,9 @@
     </ClInclude>
     <ClInclude Include="Creational\Prototype\Prototype.h">
       <Filter>Creational\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="Creational\FactoryMethod\FactoryMethod.h">
+      <Filter>Creational\FactroryMethod</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

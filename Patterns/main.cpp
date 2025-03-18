@@ -3,6 +3,7 @@
 
 #include "Creational/Singleton/Singleton.h"
 #include "Creational/Prototype/Prototype.h"
+#include "Creational/FactoryMethod/FactoryMethod.h"
 
 
 int main() {
@@ -11,6 +12,7 @@ int main() {
 	std::vector<std::shared_ptr<Pattern>> patterns;
 	patterns.push_back(std::make_shared<SingletonPattern>());
 	patterns.push_back(std::make_shared<PrototypePattern>());
+	patterns.push_back(std::make_shared<FactoryMethod>());
 
 	for (auto& pattern : patterns) 
 	{
