@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Structural">
+      <UniqueIdentifier>{f9a0c02d-31e2-4c05-ad29-e211dc80e8c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral">
+      <UniqueIdentifier>{51242517-9e80-4adc-acff-7f5221512920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Creational">
+      <UniqueIdentifier>{03899842-81e8-4611-a7cf-d494c0519dab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Creational\Singleton">
+      <UniqueIdentifier>{e207d69c-aa83-4ad1-a72f-aefb9aee256e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Creational\FactroryMethod">
+      <UniqueIdentifier>{bb8557f5-8e39-48b3-b03c-3bea6b2832e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Creational\AbstractFactory">
+      <UniqueIdentifier>{40d23c4f-58a0-4bb0-837d-ce8b5c8f9b5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Creational\Builder">
+      <UniqueIdentifier>{8166b483-87d4-47a0-9b2f-85ff26b3a4cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Creational\Prototype">
+      <UniqueIdentifier>{2eb4245f-0963-49ec-a1c2-085e20ffc022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Structural\Adaptor">
+      <UniqueIdentifier>{4c6c6fab-9761-4c09-ad13-6e5f6a5e3859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Structural\Bridge">
+      <UniqueIdentifier>{f9cdf70d-7452-49fb-95e7-7b32860d11df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Structural\Flyweight">
+      <UniqueIdentifier>{8ae58a03-3637-4179-9650-23e6568f5aa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Structural\Proxy">
+      <UniqueIdentifier>{8eeb248a-63c9-4389-a7bd-4de3bf406075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Structural\Composite">
+      <UniqueIdentifier>{2d50800b-463c-4586-bb14-4e48c48d3e06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Structural\Decorator">
+      <UniqueIdentifier>{503ea89c-a155-407a-ae79-bd8a4d8ada62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Structural\Facade">
+      <UniqueIdentifier>{91492b71-4bde-4e1c-8c38-616079a1aea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\Strategy">
+      <UniqueIdentifier>{46c1952a-4884-473a-9a6a-74e5f2d46ca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\Memento">
+      <UniqueIdentifier>{e1711cf7-81a3-40d3-a5d2-7080a8e552fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\Iterator">
+      <UniqueIdentifier>{3476a0da-8f4e-4a1e-89a6-77cbf9e5b6bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\Observer">
+      <UniqueIdentifier>{5dd42fdb-6410-4905-8aa7-dc9c65ef0ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\ChainOfResponsibility">
+      <UniqueIdentifier>{98997295-794d-4efd-bc70-ad2eb7f40ef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\Command">
+      <UniqueIdentifier>{77a10965-a890-44ec-858f-6921ba96d4ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\State">
+      <UniqueIdentifier>{1c963ba0-e36a-47aa-a80a-2544caf71b40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\Interpreter">
+      <UniqueIdentifier>{00d75566-cf38-49b7-bc57-b84e455f2c44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\Mediator">
+      <UniqueIdentifier>{88c679fc-c495-4806-81ef-f4cd73f5f42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\TemplateMethod">
+      <UniqueIdentifier>{49454e77-e5a0-4b51-9aa2-44d34980f83b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behavioral\Visitor">
+      <UniqueIdentifier>{64990f52-7686-4dab-9916-745ec3cdace6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Singleton.cpp">
+      <Filter>Creational\Singleton</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Pattern.h" />
+    <ClInclude Include="Singleton.h">
+      <Filter>Creational\Singleton</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
