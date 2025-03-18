@@ -70,11 +70,11 @@ public:
 };
 
 
-std::string FactoryMethod::get_info() {
+std::string FactoryMethodPattern::get_info() {
 	return "Name: Factory Method.\nType: Creational.\nDescription: Define interface for object creation. Delegate concrete product creation to method of the subclasses.";
 }
 
-int FactoryMethod::run() {
+int FactoryMethodPattern::run() {
 
 	// We have business logic for working with entities. The pool of entities can be extended without violating SOLID principles.
 	std::vector<std::shared_ptr<Spawner>> world_spawners;

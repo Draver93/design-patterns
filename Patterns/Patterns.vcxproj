@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Creational\Builder\Builder.cpp" />
     <ClCompile Include="Creational\FactoryMethod\FactoryMethod.cpp" />
     <ClCompile Include="Creational\Prototype\Prototype.cpp" />
     <ClCompile Include="Creational\Singleton\Singleton.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Creational\Builder\Builder.h" />
     <ClInclude Include="Creational\FactoryMethod\FactoryMethod.h" />
     <ClInclude Include="Creational\Prototype\Prototype.h" />
     <ClInclude Include="Creational\Singleton\Singleton.h" />
