@@ -142,6 +142,7 @@
     <ClCompile Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.cpp" />
     <ClCompile Include="Behavioral\Command\CommandPattern.cpp" />
     <ClCompile Include="Behavioral\Interpreter\InterpreterPattern.cpp" />
+    <ClCompile Include="Behavioral\Observer\ObserverPattern.cpp" />
     <ClCompile Include="Creational\AbstractFactory\AbstractFactory.cpp" />
     <ClCompile Include="Creational\Builder\Builder.cpp" />
     <ClCompile Include="Creational\FactoryMethod\FactoryMethod.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.h" />
     <ClInclude Include="Behavioral\Command\CommandPattern.h" />
     <ClInclude Include="Behavioral\Interpreter\InterpreterPattern.h" />
+    <ClInclude Include="Behavioral\Observer\ObserverPattern.h" />
     <ClInclude Include="Creational\AbstractFactory\AbstractFactory.h" />
     <ClInclude Include="Creational\Builder\Builder.h" />
     <ClInclude Include="Creational\FactoryMethod\FactoryMethod.h" />
