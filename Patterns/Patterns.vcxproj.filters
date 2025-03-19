@@ -100,6 +100,9 @@
     <ClCompile Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.cpp">
       <Filter>Behavioral\ChainOfResponsibility</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\Command\CommandPattern.cpp">
+      <Filter>Behavioral\Command</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -120,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.h">
       <Filter>Behavioral\ChainOfResponsibility</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\Command\CommandPattern.h">
+      <Filter>Behavioral\Command</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

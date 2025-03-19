@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.cpp" />
+    <ClCompile Include="Behavioral\Command\CommandPattern.cpp" />
     <ClCompile Include="Creational\AbstractFactory\AbstractFactory.cpp" />
     <ClCompile Include="Creational\Builder\Builder.cpp" />
     <ClCompile Include="Creational\FactoryMethod\FactoryMethod.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.h" />
+    <ClInclude Include="Behavioral\Command\CommandPattern.h" />
     <ClInclude Include="Creational\AbstractFactory\AbstractFactory.h" />
     <ClInclude Include="Creational\Builder\Builder.h" />
     <ClInclude Include="Creational\FactoryMethod\FactoryMethod.h" />
