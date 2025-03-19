@@ -4,6 +4,7 @@
 #include "Creational/Singleton/Singleton.h"
 #include "Creational/Prototype/Prototype.h"
 #include "Creational/FactoryMethod/FactoryMethod.h"
+#include "Creational/AbstractFactory/AbstractFactory.h"
 #include "Creational/Builder/Builder.h"
 
 
@@ -15,6 +16,7 @@ int main() {
 	patterns.push_back(std::make_shared<PrototypePattern>());
 	patterns.push_back(std::make_shared<FactoryMethodPattern>());
 	patterns.push_back(std::make_shared<BuilderPattern>());
+	patterns.push_back(std::make_shared<AbstractFactoryPattern>());
 
 	for (auto& pattern : patterns) 
 	{

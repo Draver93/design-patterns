@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Creational\AbstractFactory\AbstractFactory.cpp" />
     <ClCompile Include="Creational\Builder\Builder.cpp" />
     <ClCompile Include="Creational\FactoryMethod\FactoryMethod.cpp" />
     <ClCompile Include="Creational\Prototype\Prototype.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Creational\AbstractFactory\AbstractFactory.h" />
     <ClInclude Include="Creational\Builder\Builder.h" />
     <ClInclude Include="Creational\FactoryMethod\FactoryMethod.h" />
     <ClInclude Include="Creational\Prototype\Prototype.h" />

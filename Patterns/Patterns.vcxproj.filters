@@ -94,6 +94,9 @@
     <ClCompile Include="Creational\Builder\Builder.cpp">
       <Filter>Creational\Builder</Filter>
     </ClCompile>
+    <ClCompile Include="Creational\AbstractFactory\AbstractFactory.cpp">
+      <Filter>Creational\AbstractFactory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -108,6 +111,9 @@
     </ClInclude>
     <ClInclude Include="Creational\Builder\Builder.h">
       <Filter>Creational\Builder</Filter>
+    </ClInclude>
+    <ClInclude Include="Creational\AbstractFactory\AbstractFactory.h">
+      <Filter>Creational\AbstractFactory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
