@@ -97,6 +97,9 @@
     <ClCompile Include="Creational\AbstractFactory\AbstractFactory.cpp">
       <Filter>Creational\AbstractFactory</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.cpp">
+      <Filter>Behavioral\ChainOfResponsibility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -114,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="Creational\AbstractFactory\AbstractFactory.h">
       <Filter>Creational\AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.h">
+      <Filter>Behavioral\ChainOfResponsibility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

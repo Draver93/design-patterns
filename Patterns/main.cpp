@@ -7,6 +7,8 @@
 #include "Creational/AbstractFactory/AbstractFactory.h"
 #include "Creational/Builder/Builder.h"
 
+#include "Behavioral/ChainOfResponsibility/ChainOfResponsibilityPattern.h"
+
 
 int main() {
 	int ret = 0;
@@ -17,6 +19,9 @@ int main() {
 	patterns.push_back(std::make_shared<FactoryMethodPattern>());
 	patterns.push_back(std::make_shared<BuilderPattern>());
 	patterns.push_back(std::make_shared<AbstractFactoryPattern>());
+
+	patterns.push_back(std::make_shared<ChainOfResponsibilityPattern>());
+
 
 	for (auto& pattern : patterns) 
 	{
