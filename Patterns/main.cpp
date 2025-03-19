@@ -9,6 +9,7 @@
 
 #include "Behavioral/ChainOfResponsibility/ChainOfResponsibilityPattern.h"
 #include "Behavioral/Command/CommandPattern.h"
+#include "Behavioral/Interpreter/InterpreterPattern.h"
 
 
 int main() {
@@ -23,6 +24,7 @@ int main() {
 
 	patterns.push_back(std::make_shared<ChainOfResponsibilityPattern>());
 	patterns.push_back(std::make_shared<CommandPattern>());
+	patterns.push_back(std::make_shared<InterpreterPattern>());
 
 
 	for (auto& pattern : patterns) 

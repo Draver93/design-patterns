@@ -103,6 +103,9 @@
     <ClCompile Include="Behavioral\Command\CommandPattern.cpp">
       <Filter>Behavioral\Command</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\Interpreter\InterpreterPattern.cpp">
+      <Filter>Behavioral\Interpreter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -126,6 +129,9 @@
     </ClInclude>
     <ClInclude Include="Behavioral\Command\CommandPattern.h">
       <Filter>Behavioral\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\Interpreter\InterpreterPattern.h">
+      <Filter>Behavioral\Interpreter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
