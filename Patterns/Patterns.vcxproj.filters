@@ -109,6 +109,9 @@
     <ClCompile Include="Behavioral\Observer\Observer.cpp">
       <Filter>Behavioral\Observer</Filter>
     </ClCompile>
+    <ClCompile Include="Structural\Proxy\Proxy.cpp">
+      <Filter>Structural\Proxy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -138,6 +141,9 @@
     </ClInclude>
     <ClInclude Include="Behavioral\Observer\Observer.h">
       <Filter>Behavioral\Observer</Filter>
+    </ClInclude>
+    <ClInclude Include="Structural\Proxy\Proxy.h">
+      <Filter>Structural\Proxy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
