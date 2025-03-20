@@ -1,4 +1,4 @@
-#include "ChainOfResponsibilityPattern.h"
+#include "ChainOfResponsibility.h"
 
 
 class Filter {

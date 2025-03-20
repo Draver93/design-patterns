@@ -7,10 +7,10 @@
 #include "Creational/AbstractFactory/AbstractFactory.h"
 #include "Creational/Builder/Builder.h"
 
-#include "Behavioral/ChainOfResponsibility/ChainOfResponsibilityPattern.h"
-#include "Behavioral/Command/CommandPattern.h"
-#include "Behavioral/Interpreter/InterpreterPattern.h"
-#include "Behavioral/Observer/ObserverPattern.h"
+#include "Behavioral/ChainOfResponsibility/ChainOfResponsibility.h"
+#include "Behavioral/Command/Command.h"
+#include "Behavioral/Interpreter/Interpreter.h"
+#include "Behavioral/Observer/Observer.h"
 
 
 int main() {

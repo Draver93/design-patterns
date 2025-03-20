@@ -97,16 +97,16 @@
     <ClCompile Include="Creational\AbstractFactory\AbstractFactory.cpp">
       <Filter>Creational\AbstractFactory</Filter>
     </ClCompile>
-    <ClCompile Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.cpp">
+    <ClCompile Include="Behavioral\ChainOfResponsibility\ChainOfResponsibility.cpp">
       <Filter>Behavioral\ChainOfResponsibility</Filter>
     </ClCompile>
-    <ClCompile Include="Behavioral\Command\CommandPattern.cpp">
+    <ClCompile Include="Behavioral\Command\Command.cpp">
       <Filter>Behavioral\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Behavioral\Interpreter\InterpreterPattern.cpp">
+    <ClCompile Include="Behavioral\Interpreter\Interpreter.cpp">
       <Filter>Behavioral\Interpreter</Filter>
     </ClCompile>
-    <ClCompile Include="Behavioral\Observer\ObserverPattern.cpp">
+    <ClCompile Include="Behavioral\Observer\Observer.cpp">
       <Filter>Behavioral\Observer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -127,16 +127,16 @@
     <ClInclude Include="Creational\AbstractFactory\AbstractFactory.h">
       <Filter>Creational\AbstractFactory</Filter>
     </ClInclude>
-    <ClInclude Include="Behavioral\ChainOfResponsibility\ChainOfResponsibilityPattern.h">
+    <ClInclude Include="Behavioral\ChainOfResponsibility\ChainOfResponsibility.h">
       <Filter>Behavioral\ChainOfResponsibility</Filter>
     </ClInclude>
-    <ClInclude Include="Behavioral\Command\CommandPattern.h">
+    <ClInclude Include="Behavioral\Command\Command.h">
       <Filter>Behavioral\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Behavioral\Interpreter\InterpreterPattern.h">
+    <ClInclude Include="Behavioral\Interpreter\Interpreter.h">
       <Filter>Behavioral\Interpreter</Filter>
     </ClInclude>
-    <ClInclude Include="Behavioral\Observer\ObserverPattern.h">
+    <ClInclude Include="Behavioral\Observer\Observer.h">
       <Filter>Behavioral\Observer</Filter>
     </ClInclude>
   </ItemGroup>

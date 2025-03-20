@@ -1,15 +1,15 @@
-#include "CommandPattern.h"
+#include "Command.h"
 
 #include <stack>
 #include <cmath>
 
-constexpr double PI = 3.14159265358979323846;
+constexpr float PI = 3.1415926f;
 
 class VerticalMovementReciver {
 protected:
 	float z = 0;
 public:
-	virtual void rise(int altitude) {
+	virtual void rise(float altitude) {
 		z += altitude;
 	};
 };

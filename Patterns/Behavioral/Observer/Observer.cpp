@@ -1,4 +1,4 @@
-#include "ObserverPattern.h"
+#include "Observer.h"
 
 #include <vector>
 #include <queue>
