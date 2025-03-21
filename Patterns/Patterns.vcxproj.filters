@@ -25,9 +25,6 @@
     <Filter Include="Creational\Prototype">
       <UniqueIdentifier>{2eb4245f-0963-49ec-a1c2-085e20ffc022}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Structural\Adaptor">
-      <UniqueIdentifier>{4c6c6fab-9761-4c09-ad13-6e5f6a5e3859}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Structural\Bridge">
       <UniqueIdentifier>{f9cdf70d-7452-49fb-95e7-7b32860d11df}</UniqueIdentifier>
     </Filter>
@@ -79,6 +76,9 @@
     <Filter Include="Behavioral\Visitor">
       <UniqueIdentifier>{64990f52-7686-4dab-9916-745ec3cdace6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Structural\Adapter">
+      <UniqueIdentifier>{4c6c6fab-9761-4c09-ad13-6e5f6a5e3859}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -112,6 +112,9 @@
     <ClCompile Include="Structural\Proxy\Proxy.cpp">
       <Filter>Structural\Proxy</Filter>
     </ClCompile>
+    <ClCompile Include="Structural\Adpater\Adapter.cpp">
+      <Filter>Structural\Adapter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -144,6 +147,9 @@
     </ClInclude>
     <ClInclude Include="Structural\Proxy\Proxy.h">
       <Filter>Structural\Proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="Structural\Adpater\Adapter.h">
+      <Filter>Structural\Adapter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@
 #include "Behavioral/Observer/Observer.h"
 
 #include "Structural/Proxy/Proxy.h"
+#include "Structural/Adpater/Adapter.h"
 
 int main() {
 	int ret = 0;
@@ -30,6 +31,7 @@ int main() {
 	patterns.push_back(std::make_shared<ObserverPattern>());
 	
 	patterns.push_back(std::make_shared<ProxyPattern>());
+	patterns.push_back(std::make_shared<AdapterPattern>());
 
 	for (auto& pattern : patterns) 
 	{
