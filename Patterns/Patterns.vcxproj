@@ -150,6 +150,7 @@
     <ClCompile Include="Creational\Singleton\Singleton.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Structural\Adpater\Adapter.cpp" />
+    <ClCompile Include="Structural\Bridge\Bridge.cpp" />
     <ClCompile Include="Structural\Proxy\Proxy.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +165,7 @@
     <ClInclude Include="Creational\Singleton\Singleton.h" />
     <ClInclude Include="Pattern.h" />
     <ClInclude Include="Structural\Adpater\Adapter.h" />
+    <ClInclude Include="Structural\Bridge\Bridge.h" />
     <ClInclude Include="Structural\Proxy\Proxy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

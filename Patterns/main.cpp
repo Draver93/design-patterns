@@ -14,6 +14,7 @@
 
 #include "Structural/Proxy/Proxy.h"
 #include "Structural/Adpater/Adapter.h"
+#include "Structural/Bridge/Bridge.h"
 
 int main() {
 	int ret = 0;
@@ -32,6 +33,7 @@ int main() {
 	
 	patterns.push_back(std::make_shared<ProxyPattern>());
 	patterns.push_back(std::make_shared<AdapterPattern>());
+	patterns.push_back(std::make_shared<BridgePattern>());
 
 	for (auto& pattern : patterns) 
 	{

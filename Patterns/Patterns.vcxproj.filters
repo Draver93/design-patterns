@@ -115,6 +115,9 @@
     <ClCompile Include="Structural\Adpater\Adapter.cpp">
       <Filter>Structural\Adapter</Filter>
     </ClCompile>
+    <ClCompile Include="Structural\Bridge\Bridge.cpp">
+      <Filter>Structural\Bridge</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -150,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="Structural\Adpater\Adapter.h">
       <Filter>Structural\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="Structural\Bridge\Bridge.h">
+      <Filter>Structural\Bridge</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
