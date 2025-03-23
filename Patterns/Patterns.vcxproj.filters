@@ -118,6 +118,9 @@
     <ClCompile Include="Structural\Bridge\Bridge.cpp">
       <Filter>Structural\Bridge</Filter>
     </ClCompile>
+    <ClCompile Include="Structural\Composite\Composite.cpp">
+      <Filter>Structural\Composite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -156,6 +159,9 @@
     </ClInclude>
     <ClInclude Include="Structural\Bridge\Bridge.h">
       <Filter>Structural\Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="Structural\Composite\Composite.h">
+      <Filter>Structural\Composite</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
