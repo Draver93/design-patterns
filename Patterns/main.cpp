@@ -16,6 +16,7 @@
 #include "Structural/Adpater/Adapter.h"
 #include "Structural/Bridge/Bridge.h"
 #include "Structural/Composite/Composite.h"
+#include "Structural/Decorator/Decorator.h"
 
 int main() {
 	int ret = 0;
@@ -36,6 +37,7 @@ int main() {
 	patterns.push_back(std::make_shared<AdapterPattern>());
 	patterns.push_back(std::make_shared<BridgePattern>());
 	patterns.push_back(std::make_shared<CompositePattern>());
+	patterns.push_back(std::make_shared<DecoratorPattern>());
 
 	for (auto& pattern : patterns) 
 	{

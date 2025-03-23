@@ -121,6 +121,9 @@
     <ClCompile Include="Structural\Composite\Composite.cpp">
       <Filter>Structural\Composite</Filter>
     </ClCompile>
+    <ClCompile Include="Structural\Decorator\Decorator.cpp">
+      <Filter>Structural\Decorator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -162,6 +165,9 @@
     </ClInclude>
     <ClInclude Include="Structural\Composite\Composite.h">
       <Filter>Structural\Composite</Filter>
+    </ClInclude>
+    <ClInclude Include="Structural\Decorator\Decorator.h">
+      <Filter>Structural\Decorator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
