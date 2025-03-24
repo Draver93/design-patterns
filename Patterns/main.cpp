@@ -17,6 +17,7 @@
 #include "Structural/Bridge/Bridge.h"
 #include "Structural/Composite/Composite.h"
 #include "Structural/Decorator/Decorator.h"
+#include "Structural/Facade/Facade.h"
 
 int main() {
 	int ret = 0;
@@ -38,6 +39,7 @@ int main() {
 	patterns.push_back(std::make_shared<BridgePattern>());
 	patterns.push_back(std::make_shared<CompositePattern>());
 	patterns.push_back(std::make_shared<DecoratorPattern>());
+	patterns.push_back(std::make_shared<FacadePattern>());
 
 	for (auto& pattern : patterns) 
 	{
