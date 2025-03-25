@@ -18,6 +18,7 @@
 #include "Structural/Composite/Composite.h"
 #include "Structural/Decorator/Decorator.h"
 #include "Structural/Facade/Facade.h"
+#include "Structural/Flyweight/Flyweight.h"
 
 int main() {
 	int ret = 0;
@@ -40,6 +41,7 @@ int main() {
 	patterns.push_back(std::make_shared<CompositePattern>());
 	patterns.push_back(std::make_shared<DecoratorPattern>());
 	patterns.push_back(std::make_shared<FacadePattern>());
+	patterns.push_back(std::make_shared<FlyweightPattern>());
 
 	for (auto& pattern : patterns) 
 	{

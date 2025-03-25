@@ -154,6 +154,7 @@
     <ClCompile Include="Structural\Composite\Composite.cpp" />
     <ClCompile Include="Structural\Decorator\Decorator.cpp" />
     <ClCompile Include="Structural\Facade\Facade.cpp" />
+    <ClCompile Include="Structural\Flyweight\Flyweight.cpp" />
     <ClCompile Include="Structural\Proxy\Proxy.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +173,7 @@
     <ClInclude Include="Structural\Composite\Composite.h" />
     <ClInclude Include="Structural\Decorator\Decorator.h" />
     <ClInclude Include="Structural\Facade\Facade.h" />
+    <ClInclude Include="Structural\Flyweight\Flyweight.h" />
     <ClInclude Include="Structural\Proxy\Proxy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

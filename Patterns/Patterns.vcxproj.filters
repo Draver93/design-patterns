@@ -127,6 +127,9 @@
     <ClCompile Include="Structural\Facade\Facade.cpp">
       <Filter>Structural\Facade</Filter>
     </ClCompile>
+    <ClCompile Include="Structural\Flyweight\Flyweight.cpp">
+      <Filter>Structural\Flyweight</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -174,6 +177,9 @@
     </ClInclude>
     <ClInclude Include="Structural\Facade\Facade.h">
       <Filter>Structural\Facade</Filter>
+    </ClInclude>
+    <ClInclude Include="Structural\Flyweight\Flyweight.h">
+      <Filter>Structural\Flyweight</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
