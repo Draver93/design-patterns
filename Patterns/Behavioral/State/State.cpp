@@ -96,6 +96,7 @@ public:
 	Lumberjack() : Npc(100, 50, 5, std::make_shared<LumberjackInitState>()) {}
 };
 
+
 std::string StatePattern::get_info() {
 	return "Name: State Pattern.\nType: Behavioral.\nDescription: The State pattern defines an object's behavior based on a state machine, where each state is represented by an independent class.";
 }
