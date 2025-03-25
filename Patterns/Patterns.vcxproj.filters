@@ -130,6 +130,9 @@
     <ClCompile Include="Structural\Flyweight\Flyweight.cpp">
       <Filter>Structural\Flyweight</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\State\State.cpp">
+      <Filter>Behavioral\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -180,6 +183,9 @@
     </ClInclude>
     <ClInclude Include="Structural\Flyweight\Flyweight.h">
       <Filter>Structural\Flyweight</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\State\State.h">
+      <Filter>Behavioral\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -143,6 +143,7 @@
     <ClCompile Include="Behavioral\Command\Command.cpp" />
     <ClCompile Include="Behavioral\Interpreter\Interpreter.cpp" />
     <ClCompile Include="Behavioral\Observer\Observer.cpp" />
+    <ClCompile Include="Behavioral\State\State.cpp" />
     <ClCompile Include="Creational\AbstractFactory\AbstractFactory.cpp" />
     <ClCompile Include="Creational\Builder\Builder.cpp" />
     <ClCompile Include="Creational\FactoryMethod\FactoryMethod.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Behavioral\Command\Command.h" />
     <ClInclude Include="Behavioral\Interpreter\Interpreter.h" />
     <ClInclude Include="Behavioral\Observer\Observer.h" />
+    <ClInclude Include="Behavioral\State\State.h" />
     <ClInclude Include="Creational\AbstractFactory\AbstractFactory.h" />
     <ClInclude Include="Creational\Builder\Builder.h" />
     <ClInclude Include="Creational\FactoryMethod\FactoryMethod.h" />

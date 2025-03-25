@@ -11,6 +11,7 @@
 #include "Behavioral/Command/Command.h"
 #include "Behavioral/Interpreter/Interpreter.h"
 #include "Behavioral/Observer/Observer.h"
+#include "Behavioral/State/State.h"
 
 #include "Structural/Proxy/Proxy.h"
 #include "Structural/Adpater/Adapter.h"
@@ -34,7 +35,8 @@ int main() {
 	patterns.push_back(std::make_shared<CommandPattern>());
 	patterns.push_back(std::make_shared<InterpreterPattern>());
 	patterns.push_back(std::make_shared<ObserverPattern>());
-	
+	patterns.push_back(std::make_shared<StatePattern>());
+
 	patterns.push_back(std::make_shared<ProxyPattern>());
 	patterns.push_back(std::make_shared<AdapterPattern>());
 	patterns.push_back(std::make_shared<BridgePattern>());
