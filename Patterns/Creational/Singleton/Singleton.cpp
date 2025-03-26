@@ -5,34 +5,36 @@
 #include <iostream>
 
 
-class LoggerSingleton {
-private:
-	std::queue<std::string> messages;
-	LoggerSingleton() {}
-public:
-	void push_log(std::string log) {
-		messages.push("Message " + std::to_string(messages.size()) + ": " + log);
-	}
-	std::string pop_log() {
-		if (messages.empty()) return "";
-		std::string result = messages.front();
-		messages.pop();
-		return result;
-	}
-	int length() {
-		return messages.size();
-	}
+namespace singleton_pattern {
+	class LoggerSingleton {
+	private:
+		std::queue<std::string> messages;
+		LoggerSingleton() {}
+	public:
+		void push_log(std::string log) {
+			messages.push("Message " + std::to_string(messages.size()) + ": " + log);
+		}
+		std::string pop_log() {
+			if (messages.empty()) return "";
+			std::string result = messages.front();
+			messages.pop();
+			return result;
+		}
+		int length() {
+			return messages.size();
+		}
 
-private:
-	static LoggerSingleton* instance;
-public:
-	static LoggerSingleton* getInstance() {
-		if (!instance) instance = new LoggerSingleton();
-		return instance;
-	}
+	private:
+		static LoggerSingleton* instance;
+	public:
+		static LoggerSingleton* getInstance() {
+			if (!instance) instance = new LoggerSingleton();
+			return instance;
+		}
 
-};
-LoggerSingleton* LoggerSingleton::instance = nullptr;
+	};
+	LoggerSingleton* LoggerSingleton::instance = nullptr;
+}
 
 
 std::string SingletonPattern::get_info() {
@@ -40,6 +42,8 @@ std::string SingletonPattern::get_info() {
 }
 
 int SingletonPattern::run() {
+
+	using namespace singleton_pattern;
 
 	// First scope
 	{

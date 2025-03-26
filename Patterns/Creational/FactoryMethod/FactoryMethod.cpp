@@ -2,72 +2,76 @@
 
 #include <vector>
 
-class Entity {
-public:
-	int id;
-	int health;
-	int damage;
-};
 
-class Spider : public Entity {
-public:
-	Spider(int id){
-		this->health = 5;
-		this->damage = 2;
-		this->id = id;
-	}
-};
+namespace factory_method {
 
-class Sheep : public Entity {
-public:
-	Sheep(int id) {
-		this->health = 10;
-		this->damage = 0;
-		this->id = id;
-	}
-};
-
-class Warior : public Entity {
-public:
-	Warior(int id) {
-		this->health = 100;
-		this->damage = 10;
-		this->id = id;
-	}
-};
-
-
-class Spawner {
-private:
-protected:
-	virtual std::shared_ptr<Entity> spawn(int id) = 0;
-
-public:
-	std::shared_ptr<Entity> create(int id) {
-		return spawn(id);
-	}
-};
-
-class SpiderSpawner : public Spawner {
-public:
-	std::shared_ptr<Entity> spawn(int id) {
-		return std::make_shared<Spider>(id);
+	class Entity {
+	public:
+		int id;
+		int health;
+		int damage;
 	};
-};
 
-class SheepSpawner : public Spawner {
-public:
-	std::shared_ptr<Entity> spawn(int id) {
-		return std::make_shared<Sheep>(id);
+	class Spider : public Entity {
+	public:
+		Spider(int id) {
+			this->health = 5;
+			this->damage = 2;
+			this->id = id;
+		}
 	};
-};
 
-class WariorSpawner : public Spawner {
-public:
-	std::shared_ptr<Entity> spawn(int id) {
-		return std::make_shared<Warior>(id);
+	class Sheep : public Entity {
+	public:
+		Sheep(int id) {
+			this->health = 10;
+			this->damage = 0;
+			this->id = id;
+		}
 	};
-};
+
+	class Warior : public Entity {
+	public:
+		Warior(int id) {
+			this->health = 100;
+			this->damage = 10;
+			this->id = id;
+		}
+	};
+
+
+	class Spawner {
+	private:
+	protected:
+		virtual std::shared_ptr<Entity> spawn(int id) = 0;
+
+	public:
+		std::shared_ptr<Entity> create(int id) {
+			return spawn(id);
+		}
+	};
+
+	class SpiderSpawner : public Spawner {
+	public:
+		std::shared_ptr<Entity> spawn(int id) {
+			return std::make_shared<Spider>(id);
+		};
+	};
+
+	class SheepSpawner : public Spawner {
+	public:
+		std::shared_ptr<Entity> spawn(int id) {
+			return std::make_shared<Sheep>(id);
+		};
+	};
+
+	class WariorSpawner : public Spawner {
+	public:
+		std::shared_ptr<Entity> spawn(int id) {
+			return std::make_shared<Warior>(id);
+		};
+	};
+}
 
 
 std::string FactoryMethodPattern::get_info() {
@@ -75,6 +79,8 @@ std::string FactoryMethodPattern::get_info() {
 }
 
 int FactoryMethodPattern::run() {
+
+	using namespace factory_method;
 
 	// We have business logic for working with entities. The pool of entities can be extended without violating SOLID principles.
 	std::vector<std::shared_ptr<Spawner>> world_spawners;

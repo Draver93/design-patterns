@@ -3,50 +3,53 @@
 #include <vector>
 
 
-class BottleLable {
-private:
-	std::string image_path;
-	std::string description;
-	std::string product_composition;
-public:
-	BottleLable() = delete;
-	BottleLable(std::string path, std::string desc, std::string compose) : image_path(path), description(desc), product_composition(compose) {};
-	const std::string& get_description() { return description; }
-};
+namespace flyweight_pattern {
 
-class Bottle {
-private:
-	int _uid;
-	std::shared_ptr<BottleLable> _label;
-protected:
-	Bottle(int uid, std::shared_ptr<BottleLable> label) : _uid(uid), _label(label) {}
-public:
-	const std::string& get_desc() { return _label->get_description(); }
-};
-
-class PepsiBottle : public Bottle {
-public:
-	PepsiBottle() = delete;
-	PepsiBottle(int uid, std::shared_ptr<BottleLable> label) : Bottle(uid, label) {};
-};
-
-
-class Factory {
-public:
-	virtual std::shared_ptr<Bottle> create_bottle() = 0;
-};
-
-class PepsiFactory : public Factory {
-private:
-	std::shared_ptr<BottleLable> pepsi_label;
-	int bottle_cnt = 0;
-public:
-	std::shared_ptr<Bottle> create_bottle() {
-		if (!pepsi_label) pepsi_label = std::make_shared<BottleLable>("path/to/the/image", "delicious pepsi without sugar", "sugar,water,other");
-		bottle_cnt++;
-		return std::make_shared<PepsiBottle>(bottle_cnt, pepsi_label);
+	class BottleLable {
+	private:
+		std::string image_path;
+		std::string description;
+		std::string product_composition;
+	public:
+		BottleLable() = delete;
+		BottleLable(std::string path, std::string desc, std::string compose) : image_path(path), description(desc), product_composition(compose) {};
+		const std::string& get_description() { return description; }
 	};
-};
+
+	class Bottle {
+	private:
+		int _uid;
+		std::shared_ptr<BottleLable> _label;
+	protected:
+		Bottle(int uid, std::shared_ptr<BottleLable> label) : _uid(uid), _label(label) {}
+	public:
+		const std::string& get_desc() { return _label->get_description(); }
+	};
+
+	class PepsiBottle : public Bottle {
+	public:
+		PepsiBottle() = delete;
+		PepsiBottle(int uid, std::shared_ptr<BottleLable> label) : Bottle(uid, label) {};
+	};
+
+
+	class Factory {
+	public:
+		virtual std::shared_ptr<Bottle> create_bottle() = 0;
+	};
+
+	class PepsiFactory : public Factory {
+	private:
+		std::shared_ptr<BottleLable> pepsi_label;
+		int bottle_cnt = 0;
+	public:
+		std::shared_ptr<Bottle> create_bottle() {
+			if (!pepsi_label) pepsi_label = std::make_shared<BottleLable>("path/to/the/image", "delicious pepsi without sugar", "sugar,water,other");
+			bottle_cnt++;
+			return std::make_shared<PepsiBottle>(bottle_cnt, pepsi_label);
+		};
+	};
+}
 
 
 std::string FlyweightPattern::get_info() {
@@ -54,6 +57,8 @@ std::string FlyweightPattern::get_info() {
 }
 
 int FlyweightPattern::run() {
+
+	using namespace flyweight_pattern;
 
 	std::shared_ptr<Factory> pepsi_factory = std::make_shared<PepsiFactory>();
 

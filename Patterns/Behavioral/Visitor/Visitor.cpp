@@ -100,17 +100,19 @@ std::string VisitorPattern::get_info() {
 
 int VisitorPattern::run() {
 
-	std::vector<std::shared_ptr<visitor_pattern::Entity>> group;
-	group.push_back(std::make_shared<visitor_pattern::Mage>("John"));
-	group.push_back(std::make_shared<visitor_pattern::Warrior>("Jimmy"));
-	group.push_back(std::make_shared<visitor_pattern::Archer>("Alex"));
+	using namespace visitor_pattern;
+
+	std::vector<std::shared_ptr<Entity>> group;
+	group.push_back(std::make_shared<Mage>("John"));
+	group.push_back(std::make_shared<Warrior>("Jimmy"));
+	group.push_back(std::make_shared<Archer>("Alex"));
 
 	std::cout << "\n" << "Team preparation:" << std::endl;
-	for (auto& member : group) member->execute_action(std::make_shared<visitor_pattern::Prepare>());
+	for (auto& member : group) member->execute_action(std::make_shared<Prepare>());
 	std::cout << "\n" << "Team attack:" << std::endl;
-	for (auto& member : group) member->execute_action(std::make_shared<visitor_pattern::Attack>());
+	for (auto& member : group) member->execute_action(std::make_shared<Attack>());
 	std::cout << "\n" << "Team resting:" << std::endl;
-	for (auto& member : group) member->execute_action(std::make_shared<visitor_pattern::Rest>());
+	for (auto& member : group) member->execute_action(std::make_shared<Rest>());
 
 	return 0;
 }

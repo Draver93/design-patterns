@@ -2,72 +2,76 @@
 
 #include <iostream>
 
-class MediaWorkflow {
-public:
-	MediaWorkflow(bool demuxer, bool decoder, bool processor, bool encoder, bool muxer) {
-		std::string result_pipeline = "[IN] -> ";
-		if (demuxer) result_pipeline += "[demuxer] -> ";
-		if (decoder) result_pipeline += "[decoder] -> ";
-		if (processor) result_pipeline += "[processor] -> ";
-		if (encoder) result_pipeline += "[encoder] -> ";
-		if (muxer) result_pipeline += "[muxer] -> ";
-		result_pipeline += "[OUT]";
 
-		std::cout << result_pipeline << "\n";
-	}
-};
+namespace builder_pattern {
 
-class MediaWorkflowBuilder {
-private:
-	bool use_demuxer = false, use_decoder = false, use_processor = false, use_encoder = false, use_muxer = false;
-public:
-	MediaWorkflowBuilder* demuxer() {
-		use_demuxer = true;
-		return this;
-	}
-	MediaWorkflowBuilder* decoder() {
-		use_decoder = true;
-		return this;
-	}
-	MediaWorkflowBuilder* processor() {
-		use_processor = true;
-		return this;
-	}
-	MediaWorkflowBuilder* encoder() {
-		use_encoder = true;
-		return this;
-	}
-	MediaWorkflowBuilder* muxer() {
-		use_muxer = true;
-		return this;
-	}
-	std::shared_ptr<MediaWorkflow> build() {
-		return std::make_shared<MediaWorkflow>(use_demuxer, use_decoder, use_processor, use_encoder, use_muxer);
-	}
-};
+	class MediaWorkflow {
+	public:
+		MediaWorkflow(bool demuxer, bool decoder, bool processor, bool encoder, bool muxer) {
+			std::string result_pipeline = "[IN] -> ";
+			if (demuxer) result_pipeline += "[demuxer] -> ";
+			if (decoder) result_pipeline += "[decoder] -> ";
+			if (processor) result_pipeline += "[processor] -> ";
+			if (encoder) result_pipeline += "[encoder] -> ";
+			if (muxer) result_pipeline += "[muxer] -> ";
+			result_pipeline += "[OUT]";
 
-class MediaWorkflowDirector {
-public:
-	void build_raw_media_extractor(std::shared_ptr<MediaWorkflowBuilder> builder) {
-		builder->demuxer()->decoder();
-	}
-	void build_media_transcoder(std::shared_ptr<MediaWorkflowBuilder> builder) {
-		builder->demuxer()
-			   ->decoder()
-			   ->encoder()
-			   ->muxer();
-	}
-	void build_media_remuxer(std::shared_ptr<MediaWorkflowBuilder> builder) {
-		builder->demuxer()->muxer();
-	}
-	void build_media_processor(std::shared_ptr<MediaWorkflowBuilder> builder) {
-		builder->demuxer()
-			   ->decoder()
-			   ->processor()
-			   ->encoder()
-			   ->muxer();
-	}
-};
+			std::cout << result_pipeline << "\n";
+		}
+	};
+
+	class MediaWorkflowBuilder {
+	private:
+		bool use_demuxer = false, use_decoder = false, use_processor = false, use_encoder = false, use_muxer = false;
+	public:
+		MediaWorkflowBuilder* demuxer() {
+			use_demuxer = true;
+			return this;
+		}
+		MediaWorkflowBuilder* decoder() {
+			use_decoder = true;
+			return this;
+		}
+		MediaWorkflowBuilder* processor() {
+			use_processor = true;
+			return this;
+		}
+		MediaWorkflowBuilder* encoder() {
+			use_encoder = true;
+			return this;
+		}
+		MediaWorkflowBuilder* muxer() {
+			use_muxer = true;
+			return this;
+		}
+		std::shared_ptr<MediaWorkflow> build() {
+			return std::make_shared<MediaWorkflow>(use_demuxer, use_decoder, use_processor, use_encoder, use_muxer);
+		}
+	};
+
+	class MediaWorkflowDirector {
+	public:
+		void build_raw_media_extractor(std::shared_ptr<MediaWorkflowBuilder> builder) {
+			builder->demuxer()->decoder();
+		}
+		void build_media_transcoder(std::shared_ptr<MediaWorkflowBuilder> builder) {
+			builder->demuxer()
+				->decoder()
+				->encoder()
+				->muxer();
+		}
+		void build_media_remuxer(std::shared_ptr<MediaWorkflowBuilder> builder) {
+			builder->demuxer()->muxer();
+		}
+		void build_media_processor(std::shared_ptr<MediaWorkflowBuilder> builder) {
+			builder->demuxer()
+				->decoder()
+				->processor()
+				->encoder()
+				->muxer();
+		}
+	};
+}
 
 
 std::string BuilderPattern::get_info() {
@@ -76,6 +80,8 @@ std::string BuilderPattern::get_info() {
 
 int BuilderPattern::run() {
 	
+	using namespace builder_pattern;
+
 	// Transcode pipeline class can be describe as class MediaEngine(demuxer, decoder, processor, encoder, muxer)
 	// But not all field are needed at all time. 
 

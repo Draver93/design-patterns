@@ -3,150 +3,153 @@
 #include <vector>
 
 
-class Entity {
-public:
-	int id;
-	int health;
-	int damage;
-	int mana;
-};
+namespace abstract_factory_pattern {
 
-class OrcWarior : public Entity {
-public:
-	OrcWarior(int id) {
-		this->health = 100;
-		this->mana = 0;
-		this->damage = 10;
-		this->id = id;
-	}
-};
+	class Entity {
+	public:
+		int id;
+		int health;
+		int damage;
+		int mana;
+	};
 
-class OrcMage : public Entity {
-public:
-	OrcMage(int id) {
-		this->health = 20;
-		this->mana = 80;
-		this->damage = 50;
-		this->id = id;
-	}
-};
+	class OrcWarior : public Entity {
+	public:
+		OrcWarior(int id) {
+			this->health = 100;
+			this->mana = 0;
+			this->damage = 10;
+			this->id = id;
+		}
+	};
 
-class OrcPet : public Entity {
-public:
-	OrcPet(int id) {
-		this->health = 200;
-		this->mana = 0;
-		this->damage = 5;
-		this->id = id;
-	}
-};
+	class OrcMage : public Entity {
+	public:
+		OrcMage(int id) {
+			this->health = 20;
+			this->mana = 80;
+			this->damage = 50;
+			this->id = id;
+		}
+	};
 
-class ElfWarior : public Entity {
-public:
-	ElfWarior(int id) {
-		this->health = 80;
-		this->mana = 20;
-		this->damage = 15;
-		this->id = id;
-	}
-};
+	class OrcPet : public Entity {
+	public:
+		OrcPet(int id) {
+			this->health = 200;
+			this->mana = 0;
+			this->damage = 5;
+			this->id = id;
+		}
+	};
 
-class ElfMage : public Entity {
-public:
-	ElfMage(int id) {
-		this->health = 90;
-		this->mana = 150;
-		this->damage = 70;
-		this->id = id;
-	}
-};
+	class ElfWarior : public Entity {
+	public:
+		ElfWarior(int id) {
+			this->health = 80;
+			this->mana = 20;
+			this->damage = 15;
+			this->id = id;
+		}
+	};
 
-class ElfPet : public Entity {
-public:
-	ElfPet(int id) {
-		this->health = 150;
-		this->mana = 10;
-		this->damage = 15;
-		this->id = id;
-	}
-};
+	class ElfMage : public Entity {
+	public:
+		ElfMage(int id) {
+			this->health = 90;
+			this->mana = 150;
+			this->damage = 70;
+			this->id = id;
+		}
+	};
 
-class HumanWarior : public Entity {
-public:
-	HumanWarior(int id) {
-		this->health = 90;
-		this->mana = 0;
-		this->damage = 20;
-		this->id = id;
-	}
-};
+	class ElfPet : public Entity {
+	public:
+		ElfPet(int id) {
+			this->health = 150;
+			this->mana = 10;
+			this->damage = 15;
+			this->id = id;
+		}
+	};
 
-class HumanMage : public Entity {
-public:
-	HumanMage(int id) {
-		this->health = 40;
-		this->mana = 120;
-		this->damage = 30;
-		this->id = id;
-	}
-};
+	class HumanWarior : public Entity {
+	public:
+		HumanWarior(int id) {
+			this->health = 90;
+			this->mana = 0;
+			this->damage = 20;
+			this->id = id;
+		}
+	};
 
-class HumanPet : public Entity {
-public:
-	HumanPet(int id) {
-		this->health = 170;
-		this->mana = 5;
-		this->damage = 10;
-		this->id = id;
-	}
-};
+	class HumanMage : public Entity {
+	public:
+		HumanMage(int id) {
+			this->health = 40;
+			this->mana = 120;
+			this->damage = 30;
+			this->id = id;
+		}
+	};
+
+	class HumanPet : public Entity {
+	public:
+		HumanPet(int id) {
+			this->health = 170;
+			this->mana = 5;
+			this->damage = 10;
+			this->id = id;
+		}
+	};
 
 
-class Vilage {
-public:
-	virtual std::shared_ptr<Entity> spawn_warior(int id) = 0;
-	virtual std::shared_ptr<Entity> spawn_mage(int id) = 0;
-	virtual std::shared_ptr<Entity> spawn_pet(int id) = 0;
-};
+	class Vilage {
+	public:
+		virtual std::shared_ptr<Entity> spawn_warior(int id) = 0;
+		virtual std::shared_ptr<Entity> spawn_mage(int id) = 0;
+		virtual std::shared_ptr<Entity> spawn_pet(int id) = 0;
+	};
 
-class OrcVilage : public Vilage {
-public:
-	std::shared_ptr<Entity> spawn_warior(int id) {
-		return std::make_shared<OrcWarior>(id);
-	}
-	std::shared_ptr<Entity> spawn_mage(int id) {
-		return std::make_shared<OrcMage>(id);
-	}
-	std::shared_ptr<Entity> spawn_pet(int id) {
-		return std::make_shared<OrcPet>(id);
-	}
-};
+	class OrcVilage : public Vilage {
+	public:
+		std::shared_ptr<Entity> spawn_warior(int id) {
+			return std::make_shared<OrcWarior>(id);
+		}
+		std::shared_ptr<Entity> spawn_mage(int id) {
+			return std::make_shared<OrcMage>(id);
+		}
+		std::shared_ptr<Entity> spawn_pet(int id) {
+			return std::make_shared<OrcPet>(id);
+		}
+	};
 
-class ElfVilage : public Vilage {
-public:
-	std::shared_ptr<Entity> spawn_warior(int id) {
-		return std::make_shared<ElfWarior>(id);
-	}
-	std::shared_ptr<Entity> spawn_mage(int id) {
-		return std::make_shared<ElfMage>(id);
-	}
-	std::shared_ptr<Entity> spawn_pet(int id) {
-		return std::make_shared<ElfPet>(id);
-	}
-};
+	class ElfVilage : public Vilage {
+	public:
+		std::shared_ptr<Entity> spawn_warior(int id) {
+			return std::make_shared<ElfWarior>(id);
+		}
+		std::shared_ptr<Entity> spawn_mage(int id) {
+			return std::make_shared<ElfMage>(id);
+		}
+		std::shared_ptr<Entity> spawn_pet(int id) {
+			return std::make_shared<ElfPet>(id);
+		}
+	};
 
-class HumanVilage : public Vilage {
-public:
-	std::shared_ptr<Entity> spawn_warior(int id) {
-		return std::make_shared<HumanWarior>(id);
-	}
-	std::shared_ptr<Entity> spawn_mage(int id) {
-		return std::make_shared<HumanMage>(id);
-	}
-	std::shared_ptr<Entity> spawn_pet(int id) {
-		return std::make_shared<HumanPet>(id);
-	}
-};
+	class HumanVilage : public Vilage {
+	public:
+		std::shared_ptr<Entity> spawn_warior(int id) {
+			return std::make_shared<HumanWarior>(id);
+		}
+		std::shared_ptr<Entity> spawn_mage(int id) {
+			return std::make_shared<HumanMage>(id);
+		}
+		std::shared_ptr<Entity> spawn_pet(int id) {
+			return std::make_shared<HumanPet>(id);
+		}
+	};
+}
 
 
 std::string AbstractFactoryPattern::get_info() {
@@ -154,6 +157,8 @@ std::string AbstractFactoryPattern::get_info() {
 }
 
 int AbstractFactoryPattern::run() {
+
+	using namespace abstract_factory_pattern;
 
 	// With the Factory Method pattern, you can extend a single family of classes. However, when introducing a second dimension,  
 	// the Factory Method must be modified to handle the additional dimension, which violates SOLID principles.  

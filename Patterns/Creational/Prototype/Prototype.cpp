@@ -2,73 +2,76 @@
 #include <vector>
 
 
-class IncCatridge {
-private:
-	float capacity;
-public:
-	IncCatridge() : capacity(100) { }
-	bool use(int cap_perc) { 
-		capacity -= cap_perc;
-		capacity = capacity < 0 ? 0 : capacity;
-		return capacity;
-	}
-	std::string status() {
-		return "Current capacity is: " + std::to_string(capacity);
-	}
-};
+namespace prototype_pattern {
 
-class Printer {
-protected:
-	int inc_type;
-	int capacity;
-	std::shared_ptr<IncCatridge> catridge;
-public:
-	void add_catridge(std::shared_ptr<IncCatridge> c) {
-		catridge = c;
-	}
-	std::string get_catridge_status() {
-		if (catridge) return catridge->status();
-		else "Catridge not found";
-	}
-	void print(std::string text) {
-		if (catridge->use(text.length())) std::cout << text << "\n";
-		else std::cout << "Error: Insufficient inc" << "\n";
-	}
-public:
-	virtual std::shared_ptr<Printer> clone() = 0;
-};
-
-
-class PrinterCannon : public Printer {
-
-private:
-	int _id;
-
-public:
-	PrinterCannon(int id) : _id(id) { }
-	PrinterCannon(const PrinterCannon& other) {
-		catridge = std::make_shared<IncCatridge>(*other.catridge);
-	}
-	std::shared_ptr<Printer> clone() {
-		//deep clone
-		std::shared_ptr<Printer> printer = std::make_shared<PrinterCannon>(*this);
-		return printer;
+	class IncCatridge {
+	private:
+		float capacity;
+	public:
+		IncCatridge() : capacity(100) { }
+		bool use(int cap_perc) {
+			capacity -= cap_perc;
+			capacity = capacity < 0 ? 0 : capacity;
+			return capacity;
+		}
+		std::string status() {
+			return "Current capacity is: " + std::to_string(capacity);
+		}
 	};
-};
 
-class PrinterHP : public Printer {
-private:
-	std::string guid; 
-public:
-	PrinterHP(std::string id) : guid(id) {}
-	PrinterHP(const PrinterHP& other) = default;
-
-	std::shared_ptr<Printer> clone() {
-		//shallow clone
-		std::shared_ptr<Printer> printer = std::make_shared<PrinterHP>(*this);
-		return printer;
+	class Printer {
+	protected:
+		int inc_type;
+		int capacity;
+		std::shared_ptr<IncCatridge> catridge;
+	public:
+		void add_catridge(std::shared_ptr<IncCatridge> c) {
+			catridge = c;
+		}
+		std::string get_catridge_status() {
+			if (catridge) return catridge->status();
+			else "Catridge not found";
+		}
+		void print(std::string text) {
+			if (catridge->use(text.length())) std::cout << text << "\n";
+			else std::cout << "Error: Insufficient inc" << "\n";
+		}
+	public:
+		virtual std::shared_ptr<Printer> clone() = 0;
 	};
-};
+
+
+	class PrinterCannon : public Printer {
+
+	private:
+		int _id;
+
+	public:
+		PrinterCannon(int id) : _id(id) { }
+		PrinterCannon(const PrinterCannon& other) {
+			catridge = std::make_shared<IncCatridge>(*other.catridge);
+		}
+		std::shared_ptr<Printer> clone() {
+			//deep clone
+			std::shared_ptr<Printer> printer = std::make_shared<PrinterCannon>(*this);
+			return printer;
+		};
+	};
+
+	class PrinterHP : public Printer {
+	private:
+		std::string guid;
+	public:
+		PrinterHP(std::string id) : guid(id) {}
+		PrinterHP(const PrinterHP& other) = default;
+
+		std::shared_ptr<Printer> clone() {
+			//shallow clone
+			std::shared_ptr<Printer> printer = std::make_shared<PrinterHP>(*this);
+			return printer;
+		};
+	};
+}
 
 
 std::string PrototypePattern::get_info() {
@@ -76,6 +79,8 @@ std::string PrototypePattern::get_info() {
 }
 
 int PrototypePattern::run() {
+
+	using namespace prototype_pattern;
 
 	std::cout << "\n" << "PrinterCannon with deep copy:" << "\n";
 

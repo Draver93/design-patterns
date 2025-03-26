@@ -1,55 +1,58 @@
 #include "ChainOfResponsibility.h"
 
 
-class Filter {
-protected:
-	std::shared_ptr<Filter> next;
-public:
-	std::shared_ptr<Filter> set_next(std::shared_ptr<Filter> next_filter) { next = next_filter; return next; }
-	virtual std::string process(std::string data) {
-		if (next) next->process(data);
-		return data;
-	}
-};
+namespace cor_pattern {
 
-class RotateFilter : public Filter {
-private:
-	float rot_angle = 0;
-public:
-	RotateFilter(float angle) : rot_angle(angle){ }
-	std::string process(std::string data) override {
+	class Filter {
+	protected:
+		std::shared_ptr<Filter> next;
+	public:
+		std::shared_ptr<Filter> set_next(std::shared_ptr<Filter> next_filter) { next = next_filter; return next; }
+		virtual std::string process(std::string data) {
+			if (next) next->process(data);
+			return data;
+		}
+	};
 
-		std::string result = "rotated("+ std::to_string(rot_angle) + "){" + data + "}";
-		if (next) return next->process(result);
-		return result;
-	}
-};
+	class RotateFilter : public Filter {
+	private:
+		float rot_angle = 0;
+	public:
+		RotateFilter(float angle) : rot_angle(angle) { }
+		std::string process(std::string data) override {
 
-class ScaleFilter : public Filter {
-private:
-	float scale_factor = 0;
-public:
-	ScaleFilter(float scale) : scale_factor(scale) { }
-	std::string process(std::string data) override {
+			std::string result = "rotated(" + std::to_string(rot_angle) + "){" + data + "}";
+			if (next) return next->process(result);
+			return result;
+		}
+	};
 
-		std::string result = "scale(" + std::to_string(scale_factor) + "x){" + data + "}";
-		if (next) return next->process(result);
-		return result;
-	}
-};
+	class ScaleFilter : public Filter {
+	private:
+		float scale_factor = 0;
+	public:
+		ScaleFilter(float scale) : scale_factor(scale) { }
+		std::string process(std::string data) override {
 
-class ResizeFilter : public Filter {
-private:
-	int w = 0, h = 0;
-public:
-	ResizeFilter(int width, int heigth) : w(width), h(heigth) { }
-	std::string process(std::string data) override {
+			std::string result = "scale(" + std::to_string(scale_factor) + "x){" + data + "}";
+			if (next) return next->process(result);
+			return result;
+		}
+	};
 
-		std::string result = "resize(" + std::to_string(w) + "/" + std::to_string(h) + "x){" + data + "}";
-		if (next) return next->process(result);
-		else result;
-	}
-};
+	class ResizeFilter : public Filter {
+	private:
+		int w = 0, h = 0;
+	public:
+		ResizeFilter(int width, int heigth) : w(width), h(heigth) { }
+		std::string process(std::string data) override {
+
+			std::string result = "resize(" + std::to_string(w) + "/" + std::to_string(h) + "x){" + data + "}";
+			if (next) return next->process(result);
+			else result;
+		}
+	};
+}
 
 
 std::string ChainOfResponsibilityPattern::get_info() {
@@ -57,6 +60,8 @@ std::string ChainOfResponsibilityPattern::get_info() {
 }
 
 int ChainOfResponsibilityPattern::run() {
+
+	using namespace cor_pattern;
 
 	//Scale and rotate pipeline
 	{

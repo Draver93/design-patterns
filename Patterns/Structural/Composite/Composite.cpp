@@ -2,182 +2,186 @@
 
 #include <vector>
 
-class Component {
-public:
-	virtual std::string	component_name() = 0;
-};
 
-// Battery Components
-class BatteryController : public Component {
-public:
-	std::string	component_name() {
-		return "Generic battery controller.";
-	}
-};
+namespace composite_pattern {
 
-class LitiumCell : public Component {
-public:
-	std::string	component_name() {
-		return "Litium Cell Battery.";
-	}
-};
-
-class NickelCell : public Component {
-public:
-	std::string	component_name() {
-		return "Nickel Cell Battery.";
-	}
-};
-
-
-// Frame Components
-class Buttons : public Component {
-public:
-	std::string	component_name() {
-		return "Some Buttons.";
-	}
-};
-
-class PlasicShell : public Component {
-public:
-	std::string	component_name() {
-		return "Plastic Shell.";
-	}
-};
-
-class GlassShell : public Component {
-public:
-	std::string	component_name() {
-		return "Glass Shell.";
-	}
-};
-
-
-// Screen components
-class Glass : public Component {
-public:
-	std::string	component_name() {
-		return "Glass Screen.";
-	}
-};
-
-class Saphire : public Component {
-public:
-	std::string	component_name() {
-		return "Saphire Screen.";
-	}
-};
-
-class ResistiveTouch : public Component {
-public:
-	std::string	component_name() {
-		return "Resistive Touch.";
-	}
-};
-
-class CapacitiveTouch : public Component {
-public:
-	std::string	component_name() {
-		return "Capacitive Touch.";
-	}
-};
-
-
-
-class FactoryProcess {
-private:
-	std::vector<std::shared_ptr<FactoryProcess>> subprocesses;
-	virtual std::shared_ptr<Component> build_component() {
-		return nullptr;
+	class Component {
+	public:
+		virtual std::string	component_name() = 0;
 	};
-public:
-	std::vector<std::shared_ptr<Component>> run() {
-		std::vector<std::shared_ptr<Component>> components;
-		for (auto& proc : subprocesses) {
-			std::vector<std::shared_ptr<Component>> sub_components = proc->run();
-			if (!sub_components.empty()) components.insert(components.end(), sub_components.begin(), sub_components.end());
+
+	// Battery Components
+	class BatteryController : public Component {
+	public:
+		std::string	component_name() {
+			return "Generic battery controller.";
 		}
-		std::shared_ptr<Component> component = build_component();
-		if(component) components.push_back(component);
-		return components;
 	};
-	void add_subprocess(std::shared_ptr<FactoryProcess> process) { subprocesses.push_back(process); }
-};
+
+	class LitiumCell : public Component {
+	public:
+		std::string	component_name() {
+			return "Litium Cell Battery.";
+		}
+	};
+
+	class NickelCell : public Component {
+	public:
+		std::string	component_name() {
+			return "Nickel Cell Battery.";
+		}
+	};
 
 
-class BuildBatteryController : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<BatteryController>();
-	}
-};
+	// Frame Components
+	class Buttons : public Component {
+	public:
+		std::string	component_name() {
+			return "Some Buttons.";
+		}
+	};
 
-class BuildNickelCell : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<NickelCell>();
-	}
-};
+	class PlasicShell : public Component {
+	public:
+		std::string	component_name() {
+			return "Plastic Shell.";
+		}
+	};
 
-class BuildLitiumCell : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<LitiumCell>();
-	}
-};
-
-
-class BuildGlassLayer : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<Glass>();
-	}
-};
-
-class BuildSaphireLayer : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<Saphire>();
-	}
-};
+	class GlassShell : public Component {
+	public:
+		std::string	component_name() {
+			return "Glass Shell.";
+		}
+	};
 
 
-class BuildResistiveTouch : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<ResistiveTouch>();
-	}
-};
+	// Screen components
+	class Glass : public Component {
+	public:
+		std::string	component_name() {
+			return "Glass Screen.";
+		}
+	};
 
-class BuildCapacitiveTouch : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<CapacitiveTouch>();
-	}
-};
+	class Saphire : public Component {
+	public:
+		std::string	component_name() {
+			return "Saphire Screen.";
+		}
+	};
+
+	class ResistiveTouch : public Component {
+	public:
+		std::string	component_name() {
+			return "Resistive Touch.";
+		}
+	};
+
+	class CapacitiveTouch : public Component {
+	public:
+		std::string	component_name() {
+			return "Capacitive Touch.";
+		}
+	};
 
 
-class BuildPlasticShell : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<PlasicShell>();
-	}
-};
 
-class BuildGlassShell : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<GlassShell>();
-	}
-};
+	class FactoryProcess {
+	private:
+		std::vector<std::shared_ptr<FactoryProcess>> subprocesses;
+		virtual std::shared_ptr<Component> build_component() {
+			return nullptr;
+		};
+	public:
+		std::vector<std::shared_ptr<Component>> run() {
+			std::vector<std::shared_ptr<Component>> components;
+			for (auto& proc : subprocesses) {
+				std::vector<std::shared_ptr<Component>> sub_components = proc->run();
+				if (!sub_components.empty()) components.insert(components.end(), sub_components.begin(), sub_components.end());
+			}
+			std::shared_ptr<Component> component = build_component();
+			if (component) components.push_back(component);
+			return components;
+		};
+		void add_subprocess(std::shared_ptr<FactoryProcess> process) { subprocesses.push_back(process); }
+	};
 
 
-class BuildButtons : public FactoryProcess {
-private:
-	std::shared_ptr<Component> build_component() override {
-		return std::make_shared<Buttons>();
-	}
-};
+	class BuildBatteryController : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<BatteryController>();
+		}
+	};
+
+	class BuildNickelCell : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<NickelCell>();
+		}
+	};
+
+	class BuildLitiumCell : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<LitiumCell>();
+		}
+	};
+
+
+	class BuildGlassLayer : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<Glass>();
+		}
+	};
+
+	class BuildSaphireLayer : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<Saphire>();
+		}
+	};
+
+
+	class BuildResistiveTouch : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<ResistiveTouch>();
+		}
+	};
+
+	class BuildCapacitiveTouch : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<CapacitiveTouch>();
+		}
+	};
+
+
+	class BuildPlasticShell : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<PlasicShell>();
+		}
+	};
+
+	class BuildGlassShell : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<GlassShell>();
+		}
+	};
+
+
+	class BuildButtons : public FactoryProcess {
+	private:
+		std::shared_ptr<Component> build_component() override {
+			return std::make_shared<Buttons>();
+		}
+	};
+}
 
 
 std::string CompositePattern::get_info() {
@@ -185,6 +189,9 @@ std::string CompositePattern::get_info() {
 }
 
 int CompositePattern::run() {
+
+	using namespace composite_pattern;
+
 	// what if we need to compose some objects into groups. In addition object can be a group too.
 
 	// Let's say we have a manufacturing process and need to build a complex product like a phone.  

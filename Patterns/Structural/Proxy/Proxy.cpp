@@ -2,30 +2,34 @@
 
 #include <regex>
 
-class Storage {
-public:
-	virtual void send_data(std::string) = 0;
-};
 
-class StorageProvider : public Storage {
-public:
-	void send_data(std::string data) {
-		std::cout << "POST: " << data << std::endl;
+namespace proxy_pattern {
+
+	class Storage {
+	public:
+		virtual void send_data(std::string) = 0;
 	};
-};
 
-class SanitizedStorageProvider : public Storage {
-private:
-	std::shared_ptr<Storage> real_storage;
-public:
-	SanitizedStorageProvider() {
-		real_storage = std::make_shared<StorageProvider>();
-	}
-
-	void send_data(std::string data) {
-		real_storage->send_data(std::regex_replace(data, std::regex("bad_data"), "good_data"));
+	class StorageProvider : public Storage {
+	public:
+		void send_data(std::string data) {
+			std::cout << "POST: " << data << std::endl;
+		};
 	};
-};
+
+	class SanitizedStorageProvider : public Storage {
+	private:
+		std::shared_ptr<Storage> real_storage;
+	public:
+		SanitizedStorageProvider() {
+			real_storage = std::make_shared<StorageProvider>();
+		}
+
+		void send_data(std::string data) {
+			real_storage->send_data(std::regex_replace(data, std::regex("bad_data"), "good_data"));
+		};
+	};
+}
 
 
 std::string ProxyPattern::get_info() {
@@ -33,6 +37,8 @@ std::string ProxyPattern::get_info() {
 }
 
 int ProxyPattern::run() {
+
+	using namespace proxy_pattern;
 
 	// Example without Proxy
 	{

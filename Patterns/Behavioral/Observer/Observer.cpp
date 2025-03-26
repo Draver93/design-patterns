@@ -4,52 +4,55 @@
 #include <queue>
 
 
-class Processor {
-public:
-	virtual std::string update(std::string frame) = 0;
-};
+namespace observer_pattern {
 
-class FrameResize : public Processor {
-public:
-	std::string update(std::string frame) {
-		return "Resized{" + frame + "}";
+	class Processor {
+	public:
+		virtual std::string update(std::string frame) = 0;
 	};
-};
 
-class FrameRotate : public Processor {
-public:
-	std::string update(std::string frame) {
-		return "Rotated{" + frame + "}";
+	class FrameResize : public Processor {
+	public:
+		std::string update(std::string frame) {
+			return "Resized{" + frame + "}";
+		};
 	};
-};
+
+	class FrameRotate : public Processor {
+	public:
+		std::string update(std::string frame) {
+			return "Rotated{" + frame + "}";
+		};
+	};
 
 
-class Transcoder {
-private:
-	std::vector<std::shared_ptr<Processor>> prcessors;
-	std::queue<std::string> input_data;
-public:
-	Transcoder(std::queue<std::string> data) : input_data(data) { }
+	class Transcoder {
+	private:
+		std::vector<std::shared_ptr<Processor>> prcessors;
+		std::queue<std::string> input_data;
+	public:
+		Transcoder(std::queue<std::string> data) : input_data(data) { }
 
-	void add_processor(std::shared_ptr<Processor> proc) { prcessors.push_back(proc); }
-	std::vector<std::string> run() {
-		std::vector<std::string> output_data;
+		void add_processor(std::shared_ptr<Processor> proc) { prcessors.push_back(proc); }
+		std::vector<std::string> run() {
+			std::vector<std::string> output_data;
 
-		while (!input_data.empty()) {
-			//read and decode frame
-			std::string frame = input_data.front();
-			input_data.pop();
+			while (!input_data.empty()) {
+				//read and decode frame
+				std::string frame = input_data.front();
+				input_data.pop();
 
-			//process frame
-			for (auto& processor : prcessors) frame = processor->update(frame);
+				//process frame
+				for (auto& processor : prcessors) frame = processor->update(frame);
 
-			//write frame
-			output_data.push_back(frame);
+				//write frame
+				output_data.push_back(frame);
+			}
+
+			return output_data;
 		}
-
-		return output_data;
-	}
-};
+	};
+}
 
 
 std::string ObserverPattern::get_info() {
@@ -57,6 +60,8 @@ std::string ObserverPattern::get_info() {
 }
 
 int ObserverPattern::run() {
+
+	using namespace observer_pattern;
 
 	std::queue<std::string> input_stream;
 	input_stream.push("frame_1");

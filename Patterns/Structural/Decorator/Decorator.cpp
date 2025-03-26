@@ -3,63 +3,66 @@
 #include <vector>
 
 
-class Telescope {
-public:
-	virtual float magnification() = 0;
-};
+namespace decorator_pattern {
 
-
-class OmegonTelescope : public Telescope {
-public:
-	float magnification() {
-		return 2.0f;
+	class Telescope {
+	public:
+		virtual float magnification() = 0;
 	};
-};
 
-class PrimeTelescope : public Telescope {
-public:
-	float magnification() {
-		return 10.0f;
+
+	class OmegonTelescope : public Telescope {
+	public:
+		float magnification() {
+			return 2.0f;
+		};
 	};
-};
 
-class DeltaTelescope : public Telescope {
-public:
-	float magnification() {
-		return 100.0f;
+	class PrimeTelescope : public Telescope {
+	public:
+		float magnification() {
+			return 10.0f;
+		};
 	};
-};
 
-
-class Lense2x : public Telescope {
-private:
-	std::shared_ptr<Telescope> telescope;
-public:
-	Lense2x(std::shared_ptr<Telescope> t) : telescope(t) {}
-	float magnification() {
-		return telescope->magnification() * 2.0f;
+	class DeltaTelescope : public Telescope {
+	public:
+		float magnification() {
+			return 100.0f;
+		};
 	};
-};
 
-class Lense5x : public Telescope {
-private:
-	std::shared_ptr<Telescope> telescope;
-public:
-	Lense5x(std::shared_ptr<Telescope> t) : telescope(t) {}
-	float magnification() {
-		return telescope->magnification() * 5.0f;
-	};
-};
 
-class Lense0_5x : public Telescope {
-private:
-	std::shared_ptr<Telescope> telescope;
-public:
-	Lense0_5x(std::shared_ptr<Telescope> t) : telescope(t) {}
-	float magnification() {
-		return telescope->magnification() * 0.5f;
+	class Lense2x : public Telescope {
+	private:
+		std::shared_ptr<Telescope> telescope;
+	public:
+		Lense2x(std::shared_ptr<Telescope> t) : telescope(t) {}
+		float magnification() {
+			return telescope->magnification() * 2.0f;
+		};
 	};
-};
+
+	class Lense5x : public Telescope {
+	private:
+		std::shared_ptr<Telescope> telescope;
+	public:
+		Lense5x(std::shared_ptr<Telescope> t) : telescope(t) {}
+		float magnification() {
+			return telescope->magnification() * 5.0f;
+		};
+	};
+
+	class Lense0_5x : public Telescope {
+	private:
+		std::shared_ptr<Telescope> telescope;
+	public:
+		Lense0_5x(std::shared_ptr<Telescope> t) : telescope(t) {}
+		float magnification() {
+			return telescope->magnification() * 0.5f;
+		};
+	};
+}
 
 
 std::string DecoratorPattern::get_info() {
@@ -67,6 +70,8 @@ std::string DecoratorPattern::get_info() {
 }
 
 int DecoratorPattern::run() {
+
+	using namespace decorator_pattern;
 
 	std::shared_ptr<Telescope> prime_telescope = std::make_shared<PrimeTelescope>();
 	std::cout << "\n" << "Prime Telescope Magnification(without lenses): " << prime_telescope->magnification() << std::endl;
