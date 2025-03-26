@@ -133,6 +133,9 @@
     <ClCompile Include="Behavioral\State\State.cpp">
       <Filter>Behavioral\State</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\Visitor\Visitor.cpp">
+      <Filter>Behavioral\Visitor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -186,6 +189,9 @@
     </ClInclude>
     <ClInclude Include="Behavioral\State\State.h">
       <Filter>Behavioral\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\Visitor\Visitor.h">
+      <Filter>Behavioral\Visitor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
