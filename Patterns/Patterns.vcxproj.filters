@@ -136,6 +136,9 @@
     <ClCompile Include="Behavioral\Visitor\Visitor.cpp">
       <Filter>Behavioral\Visitor</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\Strategy\Strategy.cpp">
+      <Filter>Behavioral\Strategy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -192,6 +195,9 @@
     </ClInclude>
     <ClInclude Include="Behavioral\Visitor\Visitor.h">
       <Filter>Behavioral\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\Strategy\Strategy.h">
+      <Filter>Behavioral\Strategy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
