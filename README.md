@@ -30,6 +30,9 @@ This project is a C++ implementation of various design patterns, structured to h
 - **Strategy** - Encapsulates algorithms and makes them interchangeable.
 - **Template Method** - Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps.
 - **Visitor** - Encapsulates operations on elements of an object structure.
+- **Iterator** - Provides a way to access elements of an aggregate object sequentially without exposing its underlying representation.
+- **Mediator** - Defines an object that encapsulates how a set of objects interact.
+- **Memento** - Captures and restores an object's internal state.
 
 ## Project Structure
 The project is divided into three main directories:
