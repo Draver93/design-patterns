@@ -16,7 +16,7 @@
 #include "Behavioral/Strategy/Strategy.h"
 #include "Behavioral/TemplateMethod/TemplateMethod.h"
 #include "Behavioral/Memento/Memento.h"
-
+#include "Behavioral/Mediator/Mediator.h"
 
 #include "Structural/Proxy/Proxy.h"
 #include "Structural/Adpater/Adapter.h"
@@ -45,6 +45,7 @@ int main() {
 	patterns.push_back(std::make_shared<StrategyPattern>());
 	patterns.push_back(std::make_shared<TemplateMethodPattern>());
 	patterns.push_back(std::make_shared<MementoPattern>());
+	patterns.push_back(std::make_shared<MediatorPattern>());
 
 	patterns.push_back(std::make_shared<ProxyPattern>());
 	patterns.push_back(std::make_shared<AdapterPattern>());

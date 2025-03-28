@@ -145,6 +145,9 @@
     <ClCompile Include="Behavioral\Memento\Memento.cpp">
       <Filter>Behavioral\Memento</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\Mediator\Mediator.cpp">
+      <Filter>Behavioral\Mediator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -210,6 +213,9 @@
     </ClInclude>
     <ClInclude Include="Behavioral\Memento\Memento.h">
       <Filter>Behavioral\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\Mediator\Mediator.h">
+      <Filter>Behavioral\Mediator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
