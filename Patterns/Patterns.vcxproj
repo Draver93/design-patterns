@@ -142,6 +142,7 @@
     <ClCompile Include="Behavioral\ChainOfResponsibility\ChainOfResponsibility.cpp" />
     <ClCompile Include="Behavioral\Command\Command.cpp" />
     <ClCompile Include="Behavioral\Interpreter\Interpreter.cpp" />
+    <ClCompile Include="Behavioral\Memento\Memento.cpp" />
     <ClCompile Include="Behavioral\Observer\Observer.cpp" />
     <ClCompile Include="Behavioral\State\State.cpp" />
     <ClCompile Include="Behavioral\Strategy\Strategy.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Behavioral\ChainOfResponsibility\ChainOfResponsibility.h" />
     <ClInclude Include="Behavioral\Command\Command.h" />
     <ClInclude Include="Behavioral\Interpreter\Interpreter.h" />
+    <ClInclude Include="Behavioral\Memento\Memento.h" />
     <ClInclude Include="Behavioral\Observer\Observer.h" />
     <ClInclude Include="Behavioral\State\State.h" />
     <ClInclude Include="Behavioral\Strategy\Strategy.h" />
