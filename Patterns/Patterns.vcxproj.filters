@@ -139,6 +139,9 @@
     <ClCompile Include="Behavioral\Strategy\Strategy.cpp">
       <Filter>Behavioral\Strategy</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\TemplateMethod\TemplateMethod.cpp">
+      <Filter>Behavioral\TemplateMethod</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -198,6 +201,9 @@
     </ClInclude>
     <ClInclude Include="Behavioral\Strategy\Strategy.h">
       <Filter>Behavioral\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\TemplateMethod\TemplateMethod.h">
+      <Filter>Behavioral\TemplateMethod</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

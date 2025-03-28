@@ -14,6 +14,7 @@
 #include "Behavioral/State/State.h"
 #include "Behavioral/Visitor/Visitor.h"
 #include "Behavioral/Strategy/Strategy.h"
+#include "Behavioral/TemplateMethod/TemplateMethod.h"
 
 #include "Structural/Proxy/Proxy.h"
 #include "Structural/Adpater/Adapter.h"
@@ -40,6 +41,7 @@ int main() {
 	patterns.push_back(std::make_shared<StatePattern>());
 	patterns.push_back(std::make_shared<VisitorPattern>());
 	patterns.push_back(std::make_shared<StrategyPattern>());
+	patterns.push_back(std::make_shared<TemplateMethodPattern>());
 
 	patterns.push_back(std::make_shared<ProxyPattern>());
 	patterns.push_back(std::make_shared<AdapterPattern>());
