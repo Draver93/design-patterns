@@ -21,8 +21,6 @@ namespace prototype_pattern {
 
 	class Printer {
 	protected:
-		int inc_type;
-		int capacity;
 		std::shared_ptr<IncCatridge> catridge;
 	public:
 		void add_catridge(std::shared_ptr<IncCatridge> c) {
@@ -30,10 +28,10 @@ namespace prototype_pattern {
 		}
 		std::string get_catridge_status() {
 			if (catridge) return catridge->status();
-			else "Catridge not found";
+			else return "Catridge not found";
 		}
 		void print(std::string text) {
-			if (catridge->use(text.length())) std::cout << text << "\n";
+			if (catridge->use((int)text.length())) std::cout << text << "\n";
 			else std::cout << "Error: Insufficient inc" << "\n";
 		}
 	public:

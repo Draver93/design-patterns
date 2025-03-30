@@ -21,7 +21,7 @@ namespace singleton_pattern {
 			return result;
 		}
 		int length() {
-			return messages.size();
+			return (int)messages.size();
 		}
 
 	private:

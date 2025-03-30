@@ -27,6 +27,7 @@ namespace facade_pattern {
 			case 252: return 8;
 			case 288: return 4;
 			case 324: return 9;
+			default: return 0;
 			}
 		};
 		int activate_coil(int coil_id) {
@@ -44,6 +45,7 @@ namespace facade_pattern {
 			case 8: return 288;
 			case 4: return 324;
 			case 9: return 0;
+			default: return 0;
 			}
 		}
 	};
@@ -61,6 +63,7 @@ namespace facade_pattern {
 			case 180: return 4;
 			case 240: return 2;
 			case 300: return 5;
+			default: return 0;
 			}
 		};
 		int activate_coil(int coil_id) {
@@ -74,6 +77,7 @@ namespace facade_pattern {
 			case 4: return  240;
 			case 2: return  300;
 			case 5: return  0;
+			default: return 0;
 			}
 		}
 	};

@@ -49,7 +49,7 @@ namespace cor_pattern {
 
 			std::string result = "resize(" + std::to_string(w) + "/" + std::to_string(h) + "x){" + data + "}";
 			if (next) return next->process(result);
-			else result;
+			else return result;
 		}
 	};
 }
