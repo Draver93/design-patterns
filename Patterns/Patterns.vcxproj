@@ -142,6 +142,7 @@
     <ClCompile Include="Behavioral\ChainOfResponsibility\ChainOfResponsibility.cpp" />
     <ClCompile Include="Behavioral\Command\Command.cpp" />
     <ClCompile Include="Behavioral\Interpreter\Interpreter.cpp" />
+    <ClCompile Include="Behavioral\Iterator\Iteratoк.cpp" />
     <ClCompile Include="Behavioral\Mediator\Mediator.cpp" />
     <ClCompile Include="Behavioral\Memento\Memento.cpp" />
     <ClCompile Include="Behavioral\Observer\Observer.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Behavioral\ChainOfResponsibility\ChainOfResponsibility.h" />
     <ClInclude Include="Behavioral\Command\Command.h" />
     <ClInclude Include="Behavioral\Interpreter\Interpreter.h" />
+    <ClInclude Include="Behavioral\Iterator\Iterator.h" />
     <ClInclude Include="Behavioral\Mediator\Mediator.h" />
     <ClInclude Include="Behavioral\Memento\Memento.h" />
     <ClInclude Include="Behavioral\Observer\Observer.h" />

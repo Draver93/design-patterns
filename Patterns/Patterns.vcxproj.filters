@@ -148,6 +148,9 @@
     <ClCompile Include="Behavioral\Mediator\Mediator.cpp">
       <Filter>Behavioral\Mediator</Filter>
     </ClCompile>
+    <ClCompile Include="Behavioral\Iterator\Iteratoк.cpp">
+      <Filter>Behavioral\Iterator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pattern.h" />
@@ -216,6 +219,9 @@
     </ClInclude>
     <ClInclude Include="Behavioral\Mediator\Mediator.h">
       <Filter>Behavioral\Mediator</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavioral\Iterator\Iterator.h">
+      <Filter>Behavioral\Iterator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
