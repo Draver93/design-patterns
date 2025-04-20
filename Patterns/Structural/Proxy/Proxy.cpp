@@ -19,14 +19,13 @@ namespace proxy_pattern {
 
 	class SanitizedStorageProvider : public Storage {
 	private:
-		std::shared_ptr<Storage> real_storage;
+		std::shared_ptr<Storage> m_real_storage;
 	public:
-		SanitizedStorageProvider() {
-			real_storage = std::make_shared<StorageProvider>();
-		}
+		SanitizedStorageProvider() 
+			: m_real_storage(std::make_shared<StorageProvider>()) {}
 
 		void send_data(std::string data) {
-			real_storage->send_data(std::regex_replace(data, std::regex("bad_data"), "good_data"));
+			m_real_storage->send_data(std::regex_replace(data, std::regex("bad_data"), "good_data"));
 		};
 	};
 }

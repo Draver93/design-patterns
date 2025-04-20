@@ -34,16 +34,16 @@ namespace strategy_pattern {
 	
 	class Unit {
 	protected:
-		std::shared_ptr<AttackType> _attack_type;
-		int _id;
+		std::shared_ptr<AttackType> m_attack_type;
+		int m_id;
 	public:
 		Unit() = delete;
-		Unit(int id, std::shared_ptr<AttackType> attack_type) : _attack_type(attack_type), _id(id){}
-		void set_attack_type(std::shared_ptr<AttackType> attack_type) { _attack_type = attack_type; }
+		Unit(int id, std::shared_ptr<AttackType> attack_type) : m_attack_type(attack_type), m_id(id){}
+		void set_attack_type(std::shared_ptr<AttackType> attack_type) { m_attack_type = attack_type; }
 
 		void attack() {
-			std::cout << "Unit: " + std::to_string(_id) + " executes attack: ";
-			_attack_type->execute();
+			std::cout << "Unit: " + std::to_string(m_id) + " executes attack: ";
+			m_attack_type->execute();
 		}
 	};
 
@@ -72,8 +72,9 @@ int StrategyPattern::run() {
 
 	using namespace strategy_pattern;
 	
-	std::srand(std::time(nullptr));
+	std::srand((unsigned int)std::time(nullptr));
 	std::vector<std::shared_ptr<Unit>> units;
+	units.reserve(17);
 	
 	for (int i = 0; i < 2; i++) units.push_back(std::make_shared<Knight>(units.size()));
 	for (int i = 0; i < 5; i++) units.push_back(std::make_shared<Archer>(units.size()));

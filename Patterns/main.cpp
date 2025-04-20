@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <array>
 
 #include "Creational/Singleton/Singleton.h"
 #include "Creational/Prototype/Prototype.h"
@@ -30,40 +30,41 @@
 int main() {
 	int ret = 0;
 
-	std::vector<std::shared_ptr<Pattern>> patterns;
-	patterns.push_back(std::make_shared<SingletonPattern>());
-	patterns.push_back(std::make_shared<PrototypePattern>());
-	patterns.push_back(std::make_shared<FactoryMethodPattern>());
-	patterns.push_back(std::make_shared<BuilderPattern>());
-	patterns.push_back(std::make_shared<AbstractFactoryPattern>());
+	std::array<std::shared_ptr<Pattern>, 23> patterns = {
+		std::make_shared<SingletonPattern>(),
+		std::make_shared<PrototypePattern>(),
+		std::make_shared<FactoryMethodPattern>(),
+		std::make_shared<BuilderPattern>(),
+		std::make_shared<AbstractFactoryPattern>(),
 
-	patterns.push_back(std::make_shared<ChainOfResponsibilityPattern>());
-	patterns.push_back(std::make_shared<CommandPattern>());
-	patterns.push_back(std::make_shared<InterpreterPattern>());
-	patterns.push_back(std::make_shared<ObserverPattern>());
-	patterns.push_back(std::make_shared<StatePattern>());
-	patterns.push_back(std::make_shared<VisitorPattern>());
-	patterns.push_back(std::make_shared<StrategyPattern>());
-	patterns.push_back(std::make_shared<TemplateMethodPattern>());
-	patterns.push_back(std::make_shared<MementoPattern>());
-	patterns.push_back(std::make_shared<MediatorPattern>());
-	patterns.push_back(std::make_shared<IteratorPattern>());
+		std::make_shared<ChainOfResponsibilityPattern>(),
+		std::make_shared<CommandPattern>(),
+		std::make_shared<InterpreterPattern>(),
+		std::make_shared<ObserverPattern>(),
+		std::make_shared<StatePattern>(),
+		std::make_shared<VisitorPattern>(),
+		std::make_shared<StrategyPattern>(),
+		std::make_shared<TemplateMethodPattern>(),
+		std::make_shared<MementoPattern>(),
+		std::make_shared<MediatorPattern>(),
+		std::make_shared<IteratorPattern>(),
 
-	patterns.push_back(std::make_shared<ProxyPattern>());
-	patterns.push_back(std::make_shared<AdapterPattern>());
-	patterns.push_back(std::make_shared<BridgePattern>());
-	patterns.push_back(std::make_shared<CompositePattern>());
-	patterns.push_back(std::make_shared<DecoratorPattern>());
-	patterns.push_back(std::make_shared<FacadePattern>());
-	patterns.push_back(std::make_shared<FlyweightPattern>());
+		std::make_shared<ProxyPattern>(),
+		std::make_shared<AdapterPattern>(),
+		std::make_shared<BridgePattern>(),
+		std::make_shared<CompositePattern>(),
+		std::make_shared<DecoratorPattern>(),
+		std::make_shared<FacadePattern>(),
+		std::make_shared<FlyweightPattern>()
+	};
 
-	for (auto& pattern : patterns) 
+
+	for (auto& pattern : patterns)
 	{
-		std::cout << "\n" << pattern->get_info() << std::endl;
+		std::cout << "\n" << pattern->get_info() << "\n";
 		ret = pattern->run();
 		if (ret != 0) break;
 	}
 
-	patterns.clear();
 	return ret;
 }

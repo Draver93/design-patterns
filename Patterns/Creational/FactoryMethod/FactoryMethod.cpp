@@ -7,36 +7,29 @@ namespace factory_method {
 
 	class Entity {
 	public:
-		int id;
-		int health;
-		int damage;
+		int m_id;
+		int m_health;
+		int m_damage;
+		Entity(int id, int health, int damage) 
+			: m_id(id), m_health(health), m_damage(damage) {}
 	};
 
 	class Spider : public Entity {
 	public:
-		Spider(int id) {
-			this->health = 5;
-			this->damage = 2;
-			this->id = id;
-		}
+		Spider(int id) 
+			: Entity(id, 5, 2) {}
 	};
 
 	class Sheep : public Entity {
 	public:
-		Sheep(int id) {
-			this->health = 10;
-			this->damage = 0;
-			this->id = id;
-		}
+		Sheep(int id)
+			: Entity(id, 10, 0) {}
 	};
 
 	class Warior : public Entity {
 	public:
-		Warior(int id) {
-			this->health = 100;
-			this->damage = 10;
-			this->id = id;
-		}
+		Warior(int id) : 
+			Entity(id, 100, 10) {}
 	};
 
 
@@ -108,9 +101,9 @@ int FactoryMethodPattern::run() {
 
 	for (auto& entity : world_entities) {
 		std::cout << "\n" << "Entity:\n"
-		<< "  id: " + std::to_string(entity->id) << "\n"
-		<< "  damage: " + std::to_string(entity->damage) << "\n"
-		<< "  health: " + std::to_string(entity->health) << "\n";
+		<< "  id: " + std::to_string(entity->m_id) << "\n"
+		<< "  damage: " + std::to_string(entity->m_damage) << "\n"
+		<< "  health: " + std::to_string(entity->m_health) << "\n";
 	}
 
 	return 0;

@@ -28,22 +28,24 @@ namespace observer_pattern {
 
 	class Transcoder {
 	private:
-		std::vector<std::shared_ptr<Processor>> prcessors;
-		std::queue<std::string> input_data;
-	public:
-		Transcoder(std::queue<std::string> data) : input_data(data) { }
+		std::vector<std::shared_ptr<Processor>> m_prcessors;
+		std::queue<std::string> m_input_data;
 
-		void add_processor(std::shared_ptr<Processor> proc) { prcessors.push_back(proc); }
+	public:
+		Transcoder(std::queue<std::string> data) : m_input_data(data) { }
+
+		void add_processor(std::shared_ptr<Processor> prcessor) { m_prcessors.push_back(prcessor); }
 		std::vector<std::string> run() {
 			std::vector<std::string> output_data;
 
-			while (!input_data.empty()) {
+			while (!m_input_data.empty()) {
 				//read and decode frame
-				std::string frame = input_data.front();
-				input_data.pop();
+				std::string frame = m_input_data.front();
+				m_input_data.pop();
 
 				//process frame
-				for (auto& processor : prcessors) frame = processor->update(frame);
+				for (auto& processor : m_prcessors) 
+					frame = processor->update(frame);
 
 				//write frame
 				output_data.push_back(frame);
@@ -68,11 +70,11 @@ int ObserverPattern::run() {
 	input_stream.push("frame_2");
 	input_stream.push("frame_3");
 
-	std::shared_ptr<Transcoder> transcoder = std::make_shared<Transcoder>(input_stream);
-	transcoder->add_processor(std::make_shared<FrameResize>());
-	transcoder->add_processor(std::make_shared<FrameRotate>());
+	Transcoder transcoder = Transcoder(input_stream);
+	transcoder.add_processor(std::make_shared<FrameResize>());
+	transcoder.add_processor(std::make_shared<FrameRotate>());
 
-	std::vector<std::string> output_stream = transcoder->run();
+	std::vector<std::string> output_stream = transcoder.run();
 
 	std::cout << "\n" << "Result of processing input stream using two subscrived processors: " << std::endl;
 	for (auto& frame : output_stream) {

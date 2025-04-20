@@ -24,9 +24,9 @@ namespace visitor_pattern {
 
 	class Warrior : public Entity {
 	public:
-		std::string _name;
+		std::string m_name;
 	public:
-		Warrior(const std::string& name) : _name(name) { }
+		Warrior(const std::string& name) : m_name(name) { }
 		void execute_action(std::shared_ptr<Action> action) {
 			action->execute(this);
 		}
@@ -34,9 +34,9 @@ namespace visitor_pattern {
 
 	class Mage : public Entity {
 	public:
-		std::string _name;
+		std::string m_name;
 	public:
-		Mage(const std::string& name) : _name(name) { }
+		Mage(const std::string& name) : m_name(name) { }
 		void execute_action(std::shared_ptr<Action> action) {
 			action->execute(this);
 		}
@@ -44,9 +44,9 @@ namespace visitor_pattern {
 
 	class Archer : public Entity {
 	public:
-		std::string _name;
+		std::string m_name;
 	public:
-		Archer(const std::string& name) : _name(name) { }
+		Archer(const std::string& name) : m_name(name) { }
 		void execute_action(std::shared_ptr<Action> action) {
 			action->execute(this);
 		}
@@ -56,39 +56,39 @@ namespace visitor_pattern {
 	class Attack : public Action {
 	public:
 		void execute(Warrior* actor) {
-			std::cout << "Warrior: " + actor->_name + " executing sword attack" << std::endl;
+			std::cout << "Warrior: " + actor->m_name + " executing sword attack" << std::endl;
 		}
 		void execute(Mage* actor) {
-			std::cout << "Mage: " + actor->_name + " executing fireball spell" << std::endl;
+			std::cout << "Mage: " + actor->m_name + " executing fireball spell" << std::endl;
 		}
 		void execute(Archer* actor) {
-			std::cout << "Archer: " + actor->_name + " executing triple arrow shot" << std::endl;
+			std::cout << "Archer: " + actor->m_name + " executing triple arrow shot" << std::endl;
 		}
 	};
 
 	class Rest : public Action {
 	public:
 		void execute(Warrior* actor) {
-			std::cout << "Warrior: " + actor->_name + "  restoring hp by eating meat" << std::endl;
+			std::cout << "Warrior: " + actor->m_name + "  restoring hp by eating meat" << std::endl;
 		}
 		void execute(Mage* actor) {
-			std::cout << "Mage: " + actor->_name + " restoring mana by drinking potion" << std::endl;
+			std::cout << "Mage: " + actor->m_name + " restoring mana by drinking potion" << std::endl;
 		}
 		void execute(Archer* actor) {
-			std::cout << "Archer: " + actor->_name + " restoring energy by drinking water" << std::endl;
+			std::cout << "Archer: " + actor->m_name + " restoring energy by drinking water" << std::endl;
 		}
 	};
 
 	class Prepare : public Action {
 	public:
 		void execute(Warrior* actor) {
-			std::cout << "Warrior: " + actor->_name + " always ready!" << std::endl;
+			std::cout << "Warrior: " + actor->m_name + " always ready!" << std::endl;
 		}
 		void execute(Mage* actor) {
-			std::cout << "Mage: " + actor->_name + " reading the spell" << std::endl;
+			std::cout << "Mage: " + actor->m_name + " reading the spell" << std::endl;
 		}
 		void execute(Archer* actor) {
-			std::cout << "Archer: " + actor->_name + " drawing a bowstring" << std::endl;
+			std::cout << "Archer: " + actor->m_name + " drawing a bowstring" << std::endl;
 		}
 	};
 }

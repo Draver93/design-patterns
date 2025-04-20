@@ -89,14 +89,14 @@ namespace composite_pattern {
 
 	class FactoryProcess {
 	private:
-		std::vector<std::shared_ptr<FactoryProcess>> subprocesses;
+		std::vector<std::shared_ptr<FactoryProcess>> m_subprocesses;
 		virtual std::shared_ptr<Component> build_component() {
 			return nullptr;
 		};
 	public:
 		std::vector<std::shared_ptr<Component>> run() {
 			std::vector<std::shared_ptr<Component>> components;
-			for (auto& proc : subprocesses) {
+			for (auto& proc : m_subprocesses) {
 				std::vector<std::shared_ptr<Component>> sub_components = proc->run();
 				if (!sub_components.empty()) components.insert(components.end(), sub_components.begin(), sub_components.end());
 			}
@@ -104,7 +104,7 @@ namespace composite_pattern {
 			if (component) components.push_back(component);
 			return components;
 		};
-		void add_subprocess(std::shared_ptr<FactoryProcess> process) { subprocesses.push_back(process); }
+		void add_subprocess(std::shared_ptr<FactoryProcess> process) { m_subprocesses.push_back(process); }
 	};
 
 

@@ -20,11 +20,9 @@ namespace iterator_pattern {
 		struct Node {
 			int value;
 			std::shared_ptr<Node> left, right;
-			Node(int val) {
-				value = val;
-			}
+			Node(int val) : value(val) {}
 		};
-		std::shared_ptr<Node> root;
+		std::shared_ptr<Node> m_root;
 
 		void add_recursive(int val, std::shared_ptr<Node> curr) {
 			if (curr->value == val) return; //Do not allow dups
@@ -41,9 +39,9 @@ namespace iterator_pattern {
 
 	public:
 		void add(int val) {
-			if (!root) root = std::make_shared<Node>(val);
+			if (!m_root) m_root = std::make_shared<Node>(val);
 			else {
-				add_recursive(val, root);
+				add_recursive(val, m_root);
 			}
 		};
 	};
@@ -51,7 +49,7 @@ namespace iterator_pattern {
 
 	class Iterator {
 	protected:
-		int value = 0;
+		int m_value = 0;
 
 	public:
 		virtual bool has_next() = 0;
@@ -61,57 +59,57 @@ namespace iterator_pattern {
 
 	class DFSBinaryTreeIterator : public Iterator {
 	private:
-		std::shared_ptr<BinaryTree> binary_tree;
-		std::stack<std::shared_ptr<BinaryTree::Node>> traversed;
+		std::shared_ptr<BinaryTree> m_binary_tree;
+		std::stack<std::shared_ptr<BinaryTree::Node>> m_traversed;
 
 	public:
-		DFSBinaryTreeIterator(std::shared_ptr<BinaryTree> collection) : binary_tree(collection) {
-			if (binary_tree->root) {
-				traversed.push(binary_tree->root);
+		DFSBinaryTreeIterator(std::shared_ptr<BinaryTree> collection) : m_binary_tree(collection) {
+			if (m_binary_tree->m_root) {
+				m_traversed.push(m_binary_tree->m_root);
 			}
 		}
 
-		bool has_next() { return !traversed.empty(); }
+		bool has_next() { return !m_traversed.empty(); }
 
 		int next() {
 			if (!has_next()) throw std::out_of_range("No more elements");
 
-			std::shared_ptr<BinaryTree::Node> next = traversed.top();
-			traversed.pop();
+			std::shared_ptr<BinaryTree::Node> next = m_traversed.top();
+			m_traversed.pop();
 
-			if (next->right) traversed.push(next->right);
-			if (next->left) traversed.push(next->left);
+			if (next->right) m_traversed.push(next->right);
+			if (next->left) m_traversed.push(next->left);
 
-			value = next->value;
-			return value;
+			m_value = next->value;
+			return m_value;
 		}
 	};
 
 	class BFSBinaryTreeIterator : public Iterator {
 	private:
-		std::shared_ptr<BinaryTree> binary_tree;
-		std::queue<std::shared_ptr<BinaryTree::Node>> traversed;
+		std::shared_ptr<BinaryTree> m_binary_tree;
+		std::queue<std::shared_ptr<BinaryTree::Node>> m_traversed;
 
 	public:
-		BFSBinaryTreeIterator(std::shared_ptr<BinaryTree> collection) : binary_tree(collection) {
-			if (binary_tree->root) {
-				traversed.push(binary_tree->root);
+		BFSBinaryTreeIterator(std::shared_ptr<BinaryTree> collection) : m_binary_tree(collection) {
+			if (m_binary_tree->m_root) {
+				m_traversed.push(m_binary_tree->m_root);
 			}
 		}
 
-		bool has_next() { return !traversed.empty(); }
+		bool has_next() { return !m_traversed.empty(); }
 
 		int next() {
 			if (!has_next()) throw std::out_of_range("No more elements");
 
-			std::shared_ptr<BinaryTree::Node> next = traversed.front();
-			traversed.pop();
+			std::shared_ptr<BinaryTree::Node> next = m_traversed.front();
+			m_traversed.pop();
 
-			if (next->left) traversed.push(next->left);
-			if (next->right) traversed.push(next->right);
+			if (next->left) m_traversed.push(next->left);
+			if (next->right) m_traversed.push(next->right);
 
-			value = next->value;
-			return value;
+			m_value = next->value;
+			return m_value;
 		}
 	};
 }

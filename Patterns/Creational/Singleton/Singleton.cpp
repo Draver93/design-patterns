@@ -8,32 +8,29 @@
 namespace singleton_pattern {
 	class LoggerSingleton {
 	private:
-		std::queue<std::string> messages;
+		std::queue<std::string> m_messages;
 		LoggerSingleton() {}
 	public:
 		void push_log(std::string log) {
-			messages.push("Message " + std::to_string(messages.size()) + ": " + log);
+			m_messages.push("Message " + std::to_string(m_messages.size()) + ": " + log);
 		}
 		std::string pop_log() {
-			if (messages.empty()) return "";
-			std::string result = messages.front();
-			messages.pop();
+			if (m_messages.empty()) return "";
+			std::string result = m_messages.front();
+			m_messages.pop();
 			return result;
 		}
 		int length() {
-			return (int)messages.size();
+			return (int)m_messages.size();
 		}
 
-	private:
-		static LoggerSingleton* instance;
 	public:
 		static LoggerSingleton* getInstance() {
-			if (!instance) instance = new LoggerSingleton();
-			return instance;
+			static LoggerSingleton instance;
+			return &instance;
 		}
 
 	};
-	LoggerSingleton* LoggerSingleton::instance = nullptr;
 }
 
 

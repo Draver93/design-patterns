@@ -5,50 +5,50 @@ namespace cor_pattern {
 
 	class Filter {
 	protected:
-		std::shared_ptr<Filter> next;
+		std::shared_ptr<Filter> m_next;
 	public:
-		std::shared_ptr<Filter> set_next(std::shared_ptr<Filter> next_filter) { next = next_filter; return next; }
+		std::shared_ptr<Filter> set_next(std::shared_ptr<Filter> next_filter) { m_next = next_filter; return m_next; }
 		virtual std::string process(std::string data) {
-			if (next) next->process(data);
+			if (m_next) m_next->process(data);
 			return data;
 		}
 	};
 
 	class RotateFilter : public Filter {
 	private:
-		float rot_angle = 0;
+		float m_rot_angle = 0;
 	public:
-		RotateFilter(float angle) : rot_angle(angle) { }
+		RotateFilter(float angle) : m_rot_angle(angle) { }
 		std::string process(std::string data) override {
 
-			std::string result = "rotated(" + std::to_string(rot_angle) + "){" + data + "}";
-			if (next) return next->process(result);
+			std::string result = "rotated(" + std::to_string(m_rot_angle) + "){" + data + "}";
+			if (m_next) return m_next->process(result);
 			return result;
 		}
 	};
 
 	class ScaleFilter : public Filter {
 	private:
-		float scale_factor = 0;
+		float m_scale_factor = 0;
 	public:
-		ScaleFilter(float scale) : scale_factor(scale) { }
+		ScaleFilter(float scale) : m_scale_factor(scale) { }
 		std::string process(std::string data) override {
 
-			std::string result = "scale(" + std::to_string(scale_factor) + "x){" + data + "}";
-			if (next) return next->process(result);
+			std::string result = "scale(" + std::to_string(m_scale_factor) + "x){" + data + "}";
+			if (m_next) return m_next->process(result);
 			return result;
 		}
 	};
 
 	class ResizeFilter : public Filter {
 	private:
-		int w = 0, h = 0;
+		int m_width = 0, m_height = 0;
 	public:
-		ResizeFilter(int width, int heigth) : w(width), h(heigth) { }
+		ResizeFilter(int width, int heigth) : m_width(width), m_height(heigth) { }
 		std::string process(std::string data) override {
 
-			std::string result = "resize(" + std::to_string(w) + "/" + std::to_string(h) + "x){" + data + "}";
-			if (next) return next->process(result);
+			std::string result = "resize(" + std::to_string(m_width) + "/" + std::to_string(m_height) + "x){" + data + "}";
+			if (m_next) return m_next->process(result);
 			else return result;
 		}
 	};

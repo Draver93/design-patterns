@@ -6,6 +6,8 @@
 namespace decorator_pattern {
 
 	class Telescope {
+	protected:
+		std::shared_ptr<Telescope> m_telescope;
 	public:
 		virtual float magnification() = 0;
 	};
@@ -34,32 +36,33 @@ namespace decorator_pattern {
 
 
 	class Lense2x : public Telescope {
-	private:
-		std::shared_ptr<Telescope> telescope;
 	public:
-		Lense2x(std::shared_ptr<Telescope> t) : telescope(t) {}
+		Lense2x(std::shared_ptr<Telescope> telescope) {
+			m_telescope = telescope;
+		}
 		float magnification() {
-			return telescope->magnification() * 2.0f;
+			return m_telescope->magnification() * 2.0f;
 		};
 	};
 
 	class Lense5x : public Telescope {
-	private:
-		std::shared_ptr<Telescope> telescope;
+
 	public:
-		Lense5x(std::shared_ptr<Telescope> t) : telescope(t) {}
+		Lense5x(std::shared_ptr<Telescope> telescope) {
+			m_telescope = telescope;
+		}
 		float magnification() {
-			return telescope->magnification() * 5.0f;
+			return m_telescope->magnification() * 5.0f;
 		};
 	};
 
 	class Lense0_5x : public Telescope {
-	private:
-		std::shared_ptr<Telescope> telescope;
 	public:
-		Lense0_5x(std::shared_ptr<Telescope> t) : telescope(t) {}
+		Lense0_5x(std::shared_ptr<Telescope> telescope) {
+			m_telescope = telescope;
+		}
 		float magnification() {
-			return telescope->magnification() * 0.5f;
+			return m_telescope->magnification() * 0.5f;
 		};
 	};
 }

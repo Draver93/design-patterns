@@ -84,24 +84,24 @@ namespace facade_pattern {
 
 	class Ignition {
 	protected:
-		std::shared_ptr<Engine> _engine;
+		std::shared_ptr<Engine> m_engine;
 
 	public:
-		void connect_engine(std::shared_ptr<Engine> engine) { _engine = engine; }
+		void connect_engine(std::shared_ptr<Engine> engine) { m_engine = engine; }
 		virtual void turn_on(int cycles) = 0;
 	};
 
 	class DISIgnition : public Ignition {
 	public:
 		void turn_on(int cycles) {
-			int position = _engine->cranking();
+			int position = m_engine->cranking();
 
 			//Ignition specific calc
 
 			while (cycles) {
 				// Manual 
-				int cylinder_id = _engine->calc_spark_timing(position);
-				position = _engine->activate_coil(cylinder_id);
+				int cylinder_id = m_engine->calc_spark_timing(position);
+				position = m_engine->activate_coil(cylinder_id);
 				cycles--;
 			}
 		}
@@ -110,14 +110,14 @@ namespace facade_pattern {
 	class DirectIgnition : public Ignition { //Coil-on-plug
 	public:
 		void turn_on(int cycles) {
-			int position = _engine->cranking();
+			int position = m_engine->cranking();
 
 			//Ignition specific calc
 
 			while (cycles) {
 				// Manual 
-				int cylinder_id = _engine->calc_spark_timing(position);
-				position = _engine->activate_coil(cylinder_id);
+				int cylinder_id = m_engine->calc_spark_timing(position);
+				position = m_engine->activate_coil(cylinder_id);
 				cycles--;
 			}
 		}
@@ -126,16 +126,17 @@ namespace facade_pattern {
 
 	class Car {
 	private:
-		std::shared_ptr<Engine> _engine;
-		std::shared_ptr<Ignition> _ignition;
+		std::shared_ptr<Engine> m_engine;
+		std::shared_ptr<Ignition> m_ignition;
 	public:
-		std::shared_ptr<Ignition> get_ignition() { return _ignition; };
-		std::shared_ptr<Engine> get_engine() { return _engine; };
+		std::shared_ptr<Ignition> get_ignition() { return m_ignition; };
+		std::shared_ptr<Engine> get_engine() { return m_engine; };
 
 	protected:
 		Car() = delete;
-		Car(std::shared_ptr<Engine> engine, std::shared_ptr<Ignition> ignition) : _engine(engine), _ignition(ignition) {
-			_ignition->connect_engine(_engine);
+		Car(std::shared_ptr<Engine> engine, std::shared_ptr<Ignition> ignition) 
+			: m_engine(engine), m_ignition(ignition) {
+			m_ignition->connect_engine(m_engine);
 		}
 	};
 

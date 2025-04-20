@@ -7,7 +7,7 @@ namespace adapter_pattern {
 
 	class WeatherV1 {
 	public:
-		virtual void set_region(std::string region) = 0;
+		virtual void set_region(const char* region) = 0;
 		virtual std::string get_data() = 0;
 	};
 
@@ -20,56 +20,58 @@ namespace adapter_pattern {
 
 	class RegionWeather : public WeatherV1 {
 	private:
-		std::string _region;
-		std::map<std::string, std::string> region_data;
+		std::string m_region;
+		std::map<const char*, std::string> m_region_data;
 	public:
 		RegionWeather() {
-			region_data["eu_east"] = "Weather is Good)";
-			region_data["eu_west"] = "Weather is Okey)";
-			region_data["us_east"] = "Weather is Fine)";
-			region_data["us_west"] = "Weather is Great)";
+			m_region_data["eu_east"] = "Weather is Good)";
+			m_region_data["eu_west"] = "Weather is Okey)";
+			m_region_data["us_east"] = "Weather is Fine)";
+			m_region_data["us_west"] = "Weather is Great)";
 		}
 
-		void set_region(std::string region) { _region = region; };
+		void set_region(const char* region) { m_region = region; };
 		std::string get_data() {
-			if (region_data.find(_region) != region_data.end())
-				return "Weather API version 1: " + region_data[_region];
+			if (m_region_data.find(m_region.c_str()) != m_region_data.end())
+				return "Weather API version 1: " + m_region_data[m_region.c_str()];
 			return "Weather API version 1: Region data missing";
 		};
 	};
 
 	class RegionWeatherAdapter : public WeatherV2 {
 	private:
-		std::shared_ptr<WeatherV1> _adaptee;
-		std::map<int, std::string> region_id_to_name_map;
+		std::shared_ptr<WeatherV1> m_adaptee;
+		std::map<int, const char*> m_id_to_name_map;
 	public:
-		RegionWeatherAdapter(std::shared_ptr<WeatherV1> adaptee) : _adaptee(adaptee) {
-			region_id_to_name_map[1] = "eu_east";
-			region_id_to_name_map[2] = "eu_west";
-			region_id_to_name_map[3] = "us_east";
-			region_id_to_name_map[4] = "us_west";
+		RegionWeatherAdapter(std::shared_ptr<WeatherV1> adaptee) 
+			: m_adaptee(adaptee) {
+			m_id_to_name_map[1] = "eu_east";
+			m_id_to_name_map[2] = "eu_west";
+			m_id_to_name_map[3] = "us_east";
+			m_id_to_name_map[4] = "us_west";
 		}
-		void set_region(int region_id) { _adaptee->set_region(region_id_to_name_map[region_id]); };
+		void set_region(int region_id) { m_adaptee->set_region(m_id_to_name_map[region_id]); };
 		std::string get_weather() {
-			return _adaptee->get_data();
+			return m_adaptee->get_data();
 		};
 
 	};
 
 	class RegionWeatherAdapterAdapter : public WeatherV1 {
 	private:
-		std::shared_ptr<WeatherV2> _adaptee;
-		std::map<std::string, int> region_name_to_id_map;
+		std::shared_ptr<WeatherV2> m_adaptee;
+		std::map<std::string, int> m_name_to_id_map;
 	public:
-		RegionWeatherAdapterAdapter(std::shared_ptr<WeatherV2> adaptee) : _adaptee(adaptee) {
-			region_name_to_id_map["eu_east"] = 1;
-			region_name_to_id_map["eu_west"] = 2;
-			region_name_to_id_map["us_east"] = 3;
-			region_name_to_id_map["us_west"] = 4;
+		RegionWeatherAdapterAdapter(std::shared_ptr<WeatherV2> adaptee) 
+			: m_adaptee(adaptee) {
+			m_name_to_id_map["eu_east"] = 1;
+			m_name_to_id_map["eu_west"] = 2;
+			m_name_to_id_map["us_east"] = 3;
+			m_name_to_id_map["us_west"] = 4;
 		}
-		void set_region(std::string region) { _adaptee->set_region(region_name_to_id_map[region]); };
+		void set_region(const char* region) { m_adaptee->set_region(m_name_to_id_map[region]); };
 		std::string get_data() {
-			return _adaptee->get_weather();
+			return m_adaptee->get_weather();
 		};
 	};
 }

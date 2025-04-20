@@ -7,23 +7,24 @@ namespace flyweight_pattern {
 
 	class BottleLable {
 	private:
-		std::string image_path;
-		std::string description;
-		std::string product_composition;
+		std::string m_image_path;
+		std::string m_description;
+		std::string m_product_composition;
 	public:
 		BottleLable() = delete;
-		BottleLable(std::string path, std::string desc, std::string compose) : image_path(path), description(desc), product_composition(compose) {};
-		const std::string& get_description() { return description; }
+		BottleLable(std::string image_path, std::string description, std::string product_composition)
+			: m_image_path(image_path), m_description(description), m_product_composition(product_composition) {};
+		const std::string& get_description() { return m_description; }
 	};
 
 	class Bottle {
 	private:
-		int _uid;
-		std::shared_ptr<BottleLable> _label;
+		int m_uid;
+		std::shared_ptr<BottleLable> m_label;
 	protected:
-		Bottle(int uid, std::shared_ptr<BottleLable> label) : _uid(uid), _label(label) {}
+		Bottle(int uid, std::shared_ptr<BottleLable> label) : m_uid(uid), m_label(label) {}
 	public:
-		const std::string& get_desc() { return _label->get_description(); }
+		const std::string& get_desc() { return m_label->get_description(); }
 	};
 
 	class PepsiBottle : public Bottle {
@@ -40,13 +41,13 @@ namespace flyweight_pattern {
 
 	class PepsiFactory : public Factory {
 	private:
-		std::shared_ptr<BottleLable> pepsi_label;
-		int bottle_cnt = 0;
+		std::shared_ptr<BottleLable> m_label;
+		int m_bottle_cnt = 0;
 	public:
 		std::shared_ptr<Bottle> create_bottle() {
-			if (!pepsi_label) pepsi_label = std::make_shared<BottleLable>("path/to/the/image", "delicious pepsi without sugar", "sugar,water,other");
-			bottle_cnt++;
-			return std::make_shared<PepsiBottle>(bottle_cnt, pepsi_label);
+			if (!m_label) m_label = std::make_shared<BottleLable>("path/to/the/image", "delicious pepsi without sugar", "sugar,water,other");
+			m_bottle_cnt++;
+			return std::make_shared<PepsiBottle>(m_bottle_cnt, m_label);
 		};
 	};
 }

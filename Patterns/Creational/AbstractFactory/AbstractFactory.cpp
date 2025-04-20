@@ -7,99 +7,99 @@ namespace abstract_factory_pattern {
 
 	class Entity {
 	public:
-		int id;
-		int health;
-		int damage;
-		int mana;
+		int m_id;
+		int m_health;
+		int m_damage;
+		int m_mana;
 	};
 
 	class OrcWarior : public Entity {
 	public:
 		OrcWarior(int id) {
-			this->health = 100;
-			this->mana = 0;
-			this->damage = 10;
-			this->id = id;
+			this->m_health = 100;
+			this->m_mana = 0;
+			this->m_damage = 10;
+			this->m_id = id;
 		}
 	};
 
 	class OrcMage : public Entity {
 	public:
 		OrcMage(int id) {
-			this->health = 20;
-			this->mana = 80;
-			this->damage = 50;
-			this->id = id;
+			this->m_health = 20;
+			this->m_mana = 80;
+			this->m_damage = 50;
+			this->m_id = id;
 		}
 	};
 
 	class OrcPet : public Entity {
 	public:
 		OrcPet(int id) {
-			this->health = 200;
-			this->mana = 0;
-			this->damage = 5;
-			this->id = id;
+			this->m_health = 200;
+			this->m_mana = 0;
+			this->m_damage = 5;
+			this->m_id = id;
 		}
 	};
 
 	class ElfWarior : public Entity {
 	public:
 		ElfWarior(int id) {
-			this->health = 80;
-			this->mana = 20;
-			this->damage = 15;
-			this->id = id;
+			this->m_health = 80;
+			this->m_mana = 20;
+			this->m_damage = 15;
+			this->m_id = id;
 		}
 	};
 
 	class ElfMage : public Entity {
 	public:
 		ElfMage(int id) {
-			this->health = 90;
-			this->mana = 150;
-			this->damage = 70;
-			this->id = id;
+			this->m_health = 90;
+			this->m_mana = 150;
+			this->m_damage = 70;
+			this->m_id = id;
 		}
 	};
 
 	class ElfPet : public Entity {
 	public:
 		ElfPet(int id) {
-			this->health = 150;
-			this->mana = 10;
-			this->damage = 15;
-			this->id = id;
+			this->m_health = 150;
+			this->m_mana = 10;
+			this->m_damage = 15;
+			this->m_id = id;
 		}
 	};
 
 	class HumanWarior : public Entity {
 	public:
 		HumanWarior(int id) {
-			this->health = 90;
-			this->mana = 0;
-			this->damage = 20;
-			this->id = id;
+			this->m_health = 90;
+			this->m_mana = 0;
+			this->m_damage = 20;
+			this->m_id = id;
 		}
 	};
 
 	class HumanMage : public Entity {
 	public:
 		HumanMage(int id) {
-			this->health = 40;
-			this->mana = 120;
-			this->damage = 30;
-			this->id = id;
+			this->m_health = 40;
+			this->m_mana = 120;
+			this->m_damage = 30;
+			this->m_id = id;
 		}
 	};
 
 	class HumanPet : public Entity {
 	public:
 		HumanPet(int id) {
-			this->health = 170;
-			this->mana = 5;
-			this->damage = 10;
-			this->id = id;
+			this->m_health = 170;
+			this->m_mana = 5;
+			this->m_damage = 10;
+			this->m_id = id;
 		}
 	};
 
@@ -165,38 +165,38 @@ int AbstractFactoryPattern::run() {
 	//  
 	// This is where the Abstract Factory pattern helps maintain SOLID principles by introducing factories for families of objects.
 
-	std::vector<std::shared_ptr<Vilage>> vilages;
-	vilages.push_back(std::make_shared<HumanVilage>());
-	vilages.push_back(std::make_shared<ElfVilage>());
-	vilages.push_back(std::make_shared<OrcVilage>());
-	// vilages.push_back(std::make_shared<...>());
-	// vilages.push_back(std::make_shared<...>());
-	// vilages.push_back(std::make_shared<...>());
-	// vilages.push_back(std::make_shared<...>());
+	std::vector<std::shared_ptr<Vilage>> villages;
+	villages.push_back(std::make_shared<HumanVilage>());
+	villages.push_back(std::make_shared<ElfVilage>());
+	villages.push_back(std::make_shared<OrcVilage>());
+	// villages.push_back(std::make_shared<...>());
+	// villages.push_back(std::make_shared<...>());
+	// villages.push_back(std::make_shared<...>());
+	// villages.push_back(std::make_shared<...>());
 
 	// Now our business logic will work only with Vilages and Entities
 	std::vector<std::shared_ptr<Entity>> world_entities;
 	int entity_id = 0;
-	for (auto& vilage : vilages) {
-		world_entities.push_back(vilage->spawn_mage(entity_id));
+	for (auto& village : villages) {
+		world_entities.push_back(village->spawn_mage(entity_id));
 		entity_id++;
 	}
 
-	for (auto& vilage : vilages) {
-		world_entities.push_back(vilage->spawn_warior(entity_id));
+	for (auto& village : villages) {
+		world_entities.push_back(village->spawn_warior(entity_id));
 		entity_id++;
 	}
 
-	for (auto& vilage : vilages) {
-		world_entities.push_back(vilage->spawn_pet(entity_id));
+	for (auto& village : villages) {
+		world_entities.push_back(village->spawn_pet(entity_id));
 		entity_id++;
 	}
 
 	for (auto& entity : world_entities) {
 		std::cout << "\n" << "Entity:\n"
-			<< "  id: " + std::to_string(entity->id) << "\n"
-			<< "  damage: " + std::to_string(entity->damage) << "\n"
-			<< "  health: " + std::to_string(entity->health) << "\n";
+			<< "  id: " + std::to_string(entity->m_id) << "\n"
+			<< "  damage: " + std::to_string(entity->m_damage) << "\n"
+			<< "  health: " + std::to_string(entity->m_health) << "\n";
 	}
 
 	return 0;

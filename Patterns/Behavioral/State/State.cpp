@@ -12,31 +12,31 @@ namespace state_pattern {
 
 	class Npc {
 	private:
-		int _health;
-		int _energy, _max_energy;
-		int _power;
-		int _level = 0;
+		int m_health;
+		int m_energy, m_max_energy;
+		int m_power;
+		int m_level = 0;
 
-		std::shared_ptr<NpcState> current_state;
+		std::shared_ptr<NpcState> m_current_state;
 	public:
-		void update() { current_state->update(this); }
-		void set_state(std::shared_ptr<NpcState> next) { current_state = next; }
+		void update() { m_current_state->update(this); }
+		void set_state(std::shared_ptr<NpcState> next) { m_current_state = next; }
 		bool use_energy(int amount) {
-			_energy -= amount;
-			bool enough = _energy >= 0;
-			_energy = _energy > 0 ? _energy : 0;
+			m_energy -= amount;
+			bool enough = m_energy >= 0;
+			m_energy = m_energy > 0 ? m_energy : 0;
 			return enough;
 		}
 		bool gain_energy(int amount) {
-			_energy += amount;
-			if (_energy > _max_energy) _energy = _max_energy;
-			return _energy == _max_energy;
+			m_energy += amount;
+			if (m_energy > m_max_energy) m_energy = m_max_energy;
+			return m_energy == m_max_energy;
 		}
 	public:
 		Npc() = delete;
 		Npc(int hp, int energy, int power, std::shared_ptr<NpcState> init_state) :
-			_health(hp), _energy(energy), _power(power), current_state(init_state) {
-			_max_energy = _energy;
+			m_health(hp), m_energy(energy), m_power(power), m_current_state(init_state) {
+			m_max_energy = m_energy;
 		}
 	};
 
@@ -109,10 +109,10 @@ int StatePattern::run() {
 
 	using namespace state_pattern;
 
-	std::shared_ptr<Npc> lumberjack = std::make_shared<Lumberjack>();
+	Lumberjack lumberjack = Lumberjack();
 
-	std::cout << "\n" << "Display 20 steps of lumberjack" << std::endl;
-	for (int i = 0; i < 20; i++) lumberjack->update();
+	std::cout << "\nDisplay 20 steps of lumberjack" << std::endl;
+	for (int i = 0; i < 20; i++) lumberjack.update();
 
 	return 0;
 }

@@ -6,32 +6,33 @@ namespace prototype_pattern {
 
 	class IncCatridge {
 	private:
-		float capacity;
+		float m_capacity;
 	public:
-		IncCatridge() : capacity(100) { }
+		IncCatridge() 
+			: m_capacity(100) { }
 		bool use(int cap_perc) {
-			capacity -= cap_perc;
-			capacity = capacity < 0 ? 0 : capacity;
-			return capacity;
+			m_capacity -= cap_perc;
+			m_capacity = m_capacity < 0 ? 0 : m_capacity;
+			return m_capacity;
 		}
 		std::string status() {
-			return "Current capacity is: " + std::to_string(capacity);
+			return "Current capacity is: " + std::to_string(m_capacity);
 		}
 	};
 
 	class Printer {
 	protected:
-		std::shared_ptr<IncCatridge> catridge;
+		std::shared_ptr<IncCatridge> m_cartridge;
 	public:
-		void add_catridge(std::shared_ptr<IncCatridge> c) {
-			catridge = c;
+		void add_catridge(std::shared_ptr<IncCatridge> cartridge)  {
+			m_cartridge = cartridge;
 		}
 		std::string get_catridge_status() {
-			if (catridge) return catridge->status();
+			if (m_cartridge) return m_cartridge->status();
 			else return "Catridge not found";
 		}
 		void print(std::string text) {
-			if (catridge->use((int)text.length())) std::cout << text << "\n";
+			if (m_cartridge->use((int)text.length())) std::cout << text << "\n";
 			else std::cout << "Error: Insufficient inc" << "\n";
 		}
 	public:
@@ -42,12 +43,12 @@ namespace prototype_pattern {
 	class PrinterCannon : public Printer {
 
 	private:
-		int _id;
+		int m_id;
 
 	public:
-		PrinterCannon(int id) : _id(id) { }
+		PrinterCannon(int id) : m_id(id) { }
 		PrinterCannon(const PrinterCannon& other) {
-			catridge = std::make_shared<IncCatridge>(*other.catridge);
+			m_cartridge = std::make_shared<IncCatridge>(*other.m_cartridge);
 		}
 		std::shared_ptr<Printer> clone() {
 			//deep clone
@@ -58,9 +59,9 @@ namespace prototype_pattern {
 
 	class PrinterHP : public Printer {
 	private:
-		std::string guid;
+		std::string m_guid;
 	public:
-		PrinterHP(std::string id) : guid(id) {}
+		PrinterHP(std::string id) : m_guid(id) {}
 		PrinterHP(const PrinterHP& other) = default;
 
 		std::shared_ptr<Printer> clone() {

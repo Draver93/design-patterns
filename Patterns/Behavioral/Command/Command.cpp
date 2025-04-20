@@ -10,39 +10,39 @@ namespace command_pattern {
 
 	class VerticalMovementReciver {
 	protected:
-		float z = 0;
+		float m_altitude = 0;
 	public:
 		virtual void rise(float altitude) {
-			z += altitude;
+			m_altitude += altitude;
 		};
 	};
 
 	class HorizontalMovementReciver {
 	protected:
-		float x = 0, y = 0;
-		float angle = 0;
+		float m_pos_x = 0, m_pos_y = 0;
+		float m_angle = 0;
 	public:
 		virtual void move(float distance) {
-			float rad = angle * (PI / 180.0f);
-			x += distance * std::cos(rad);
-			y += distance * std::sin(rad);
+			float rad = m_angle * (PI / 180.0f);
+			m_pos_x += distance * std::cos(rad);
+			m_pos_y += distance * std::sin(rad);
 		};
 		virtual void rotate(float degree) {
-			angle += degree;
+			m_angle += degree;
 		};
 	};
 
 	class RCDrone : public HorizontalMovementReciver, public VerticalMovementReciver {
 	public:
 		std::string get_status() {
-			return "pos: x[" + std::to_string(x) + "], y[" + std::to_string(x) + "], z[" + std::to_string(z) + "]; angle: " + std::to_string(angle);
+			return "pos: x[" + std::to_string(m_pos_x) + "], y[" + std::to_string(m_pos_x) + "], z[" + std::to_string(m_altitude) + "]; angle: " + std::to_string(m_angle);
 		}
 	};
 
 	class RCCar : public HorizontalMovementReciver {
 	public:
 		std::string get_status() {
-			return "pos: x[" + std::to_string(x) + "], y[" + std::to_string(x) + "]; angle: " + std::to_string(angle);
+			return "pos: x[" + std::to_string(m_pos_x) + "], y[" + std::to_string(m_pos_x) + "]; angle: " + std::to_string(m_angle);
 		}
 	};
 
@@ -55,88 +55,88 @@ namespace command_pattern {
 
 	class MoveSignal : public Signal {
 	private:
-		float dst;
-		std::shared_ptr<HorizontalMovementReciver> rcvr;
+		float m_dst;
+		std::shared_ptr<HorizontalMovementReciver> m_rcvr;
 	public:
-		MoveSignal(float distance, std::shared_ptr<HorizontalMovementReciver> reciver) : dst(distance), rcvr(reciver) { }
+		MoveSignal(float distance, std::shared_ptr<HorizontalMovementReciver> reciver) : m_dst(distance), m_rcvr(reciver) { }
 		void execute() override {
-			rcvr->move(dst);
+			m_rcvr->move(m_dst);
 		};
 		void undo() override {
-			rcvr->move(-dst);
+			m_rcvr->move(-m_dst);
 		};
 	};
 
 	class RotateSignal : public Signal {
 	private:
-		float degree;
-		std::shared_ptr<HorizontalMovementReciver> rcvr;
+		float m_angle;
+		std::shared_ptr<HorizontalMovementReciver> m_rcvr;
 	public:
-		RotateSignal(float angle, std::shared_ptr<HorizontalMovementReciver> reciver) : degree(angle), rcvr(reciver) { }
+		RotateSignal(float angle, std::shared_ptr<HorizontalMovementReciver> reciver) : m_angle(angle), m_rcvr(reciver) { }
 		void execute() override {
-			rcvr->rotate(degree);
+			m_rcvr->rotate(m_angle);
 		};
 		void undo() override {
-			rcvr->rotate(-degree);
+			m_rcvr->rotate(-m_angle);
 		};
 	};
 
 	class AltitudeSignal : public Signal {
 	private:
-		float alt;
-		std::shared_ptr<VerticalMovementReciver> rcvr;
+		float m_altitude;
+		std::shared_ptr<VerticalMovementReciver> m_rcvr;
 	public:
-		AltitudeSignal(float altitude, std::shared_ptr<VerticalMovementReciver> reciver) : alt(altitude), rcvr(reciver) { }
+		AltitudeSignal(float altitude, std::shared_ptr<VerticalMovementReciver> reciver) : m_altitude(altitude), m_rcvr(reciver) { }
 		void execute() {
-			rcvr->rise(alt);
+			m_rcvr->rise(m_altitude);
 		};
 		void undo() {
-			rcvr->rise(-alt);
+			m_rcvr->rise(-m_altitude);
 		};
 	};
 
 
 	class RadioController {
 	private:
-		std::shared_ptr<HorizontalMovementReciver> horizontal_movement_reciver;
-		std::shared_ptr<VerticalMovementReciver> verical_movement_reciver;
-		std::stack<std::shared_ptr<Signal>> signals;
+		std::shared_ptr<HorizontalMovementReciver> m_movement_reciver_hor;
+		std::shared_ptr<VerticalMovementReciver> m_movement_reciver_vert;
+		std::stack<std::shared_ptr<Signal>> m_signals;
 	public:
 		RadioController() { }
 		void connect_vertical_reciver(std::shared_ptr<VerticalMovementReciver> reciver) {
-			verical_movement_reciver = reciver;
+			m_movement_reciver_vert = reciver;
 		}
 		void connect_horizontal_reciver(std::shared_ptr<HorizontalMovementReciver> reciver) {
-			horizontal_movement_reciver = reciver;
+			m_movement_reciver_hor = reciver;
 		}
 		void move(float distance) {
-			if (!horizontal_movement_reciver) { std::cout << "\n" << "Command `move` failed to execute" << "\n"; return; }
+			if (!m_movement_reciver_hor) { std::cout << "\n" << "Command `move` failed to execute" << "\n"; return; }
 			if (distance != 0) {
-				std::shared_ptr<Signal> signal = std::make_shared<MoveSignal>(distance, horizontal_movement_reciver);
+				std::shared_ptr<Signal> signal = std::make_shared<MoveSignal>(distance, m_movement_reciver_hor);
 				signal->execute();
-				signals.push(signal);
+				m_signals.push(signal);
 			}
 		}
 		void rotate(float angle) {
-			if (!horizontal_movement_reciver) { std::cout << "\n" << "Command `rotate` failed to execute" << "\n"; return; }
+			if (!m_movement_reciver_hor) { std::cout << "\n" << "Command `rotate` failed to execute" << "\n"; return; }
 			if (angle != 0) {
-				std::shared_ptr<Signal> signal = std::make_shared<RotateSignal>(angle, horizontal_movement_reciver);
+				std::shared_ptr<Signal> signal = std::make_shared<RotateSignal>(angle, m_movement_reciver_hor);
 				signal->execute();
-				signals.push(signal);
+				m_signals.push(signal);
 			}
 		}
 		void rise(float alt) {
-			if (!verical_movement_reciver) { std::cout << "\n" << "Command `rise` failed to execute" << "\n"; return; }
+			if (!m_movement_reciver_vert) { std::cout << "\n" << "Command `rise` failed to execute" << "\n"; return; }
 			if (alt != 0) {
-				std::shared_ptr<Signal> signal = std::make_shared<AltitudeSignal>(alt, verical_movement_reciver);
+				std::shared_ptr<Signal> signal = std::make_shared<AltitudeSignal>(alt, m_movement_reciver_vert);
 				signal->execute();
-				signals.push(signal);
+				m_signals.push(signal);
 			}
 		}
 		void home() {
-			while (!signals.empty()) {
-				signals.top()->undo();
-				signals.pop();
+			while (!m_signals.empty()) {
+				m_signals.top()->undo();
+				m_signals.pop();
 			}
 		}
 	};
